@@ -1,0 +1,758 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptune | MY UNIVERSE 2.0</title>
+    <link rel="stylesheet" href="../main.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #071426;
+            color: #eaf4ff;
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .neptune-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 7%;
+            background: rgba(5, 15, 32, 0.96);
+            border-bottom: 1px solid rgba(110, 190, 255, 0.2);
+        }
+
+        .neptune-logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #b6dcff;
+        }
+
+        .neptune-home {
+            padding: 10px 18px;
+            border: 1px solid #78baff;
+            border-radius: 25px;
+            color: #c8e5ff;
+            transition: 0.3s;
+        }
+
+        .neptune-home:hover {
+            background: #78baff;
+            color: #071426;
+        }
+
+        .neptune-hero {
+            min-height: 580px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 30px;
+            padding: 70px 9%;
+            background:
+                radial-gradient(circle at 75% 45%, rgba(24, 102, 201, 0.25), transparent 35%),
+                linear-gradient(135deg, #071426, #0c2850 65%, #06101f);
+            overflow: hidden;
+        }
+
+        .neptune-label {
+            color: #7dbbff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+        }
+
+        .neptune-hero h1 {
+            margin: 15px 0;
+            font-size: clamp(48px, 7vw, 88px);
+            line-height: 1.05;
+            color: #e5f3ff;
+        }
+
+        .neptune-hero p {
+            max-width: 600px;
+            color: #bdcfe5;
+            font-size: 17px;
+        }
+
+        .neptune-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 22px;
+            border-radius: 30px;
+            background: #79baff;
+            color: #071426;
+            font-weight: bold;
+        }
+
+        .neptune-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 350px;
+        }
+
+        .neptune-planet {
+            position: relative;
+            width: min(300px, 70vw);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background:
+                radial-gradient(ellipse at 30% 25%, rgba(180, 225, 255, 0.9), transparent 8%),
+                linear-gradient(175deg, transparent 20%, rgba(7, 42, 119, 0.4) 22%, transparent 26%),
+                repeating-linear-gradient(
+                    178deg,
+                    #2678d7 0px,
+                    #2678d7 12px,
+                    #1456b0 18px,
+                    #328ee7 26px,
+                    #1752a5 34px
+                );
+            box-shadow:
+                inset -35px -20px 60px #020a25,
+                inset 18px 10px 35px rgba(159, 218, 255, 0.35),
+                0 0 65px rgba(38, 128, 255, 0.45);
+            overflow: hidden;
+            animation: neptuneFloat 6s ease-in-out infinite;
+        }
+
+        .neptune-planet::before {
+            content: "";
+            position: absolute;
+            top: 43%;
+            left: 35%;
+            width: 75px;
+            height: 35px;
+            background: rgba(4, 23, 76, 0.75);
+            border-radius: 50%;
+            transform: rotate(-15deg);
+            filter: blur(3px);
+        }
+
+        .neptune-planet::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(90deg, transparent 40%, rgba(0, 7, 35, 0.6));
+        }
+
+        @keyframes neptuneFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .neptune-section {
+            padding: 75px 9%;
+        }
+
+        .neptune-section:nth-of-type(even) {
+            background: #0a1c35;
+        }
+
+        .neptune-heading {
+            margin-bottom: 12px;
+            font-size: clamp(30px, 4vw, 43px);
+            color: #c5e3ff;
+            line-height: 1.2;
+        }
+
+        .neptune-subheading {
+            color: #81baff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+        }
+
+        .neptune-intro {
+            max-width: 800px;
+            color: #bfd0e5;
+            margin-bottom: 35px;
+        }
+
+        .neptune-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .neptune-card {
+            padding: 25px;
+            border-radius: 16px;
+            background: rgba(22, 54, 91, 0.65);
+            border: 1px solid rgba(125, 187, 255, 0.17);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .neptune-card:hover {
+            transform: translateY(-5px);
+            border-color: #78baff;
+        }
+
+        .neptune-card h3 {
+            margin-top: 0;
+            color: #a9d5ff;
+        }
+
+        .neptune-card p {
+            margin-bottom: 0;
+            color: #c0d0e4;
+        }
+
+        .neptune-stat {
+            font-size: 27px;
+            font-weight: bold;
+            color: #8bc5ff;
+        }
+
+        .neptune-stat-label {
+            color: #b9cce2;
+            font-size: 14px;
+        }
+
+        .neptune-highlight {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 35px;
+            align-items: center;
+            margin-top: 35px;
+        }
+
+        .neptune-highlight-box {
+            padding: 30px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #103c70, #0a1d3b);
+            border: 1px solid rgba(125, 187, 255, 0.25);
+        }
+
+        .neptune-highlight-box .big-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #9dd2ff;
+        }
+
+        .neptune-list {
+            padding-left: 22px;
+            color: #c2d2e6;
+        }
+
+        .neptune-list li {
+            margin-bottom: 12px;
+        }
+
+        .neptune-fact-number {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: #1c5792;
+            color: #e5f4ff;
+            font-weight: bold;
+        }
+
+        .neptune-reading a {
+            color: #8fcaff;
+            text-decoration: underline;
+        }
+
+        .neptune-bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 35px 9%;
+            background: #06101f;
+            border-top: 1px solid rgba(125, 187, 255, 0.2);
+        }
+
+        .neptune-bottom-nav a {
+            color: #9dccff;
+        }
+
+        .neptune-footer {
+            padding: 22px;
+            text-align: center;
+            background: #040b16;
+            color: #8da5c0;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            .neptune-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 55px 7%;
+            }
+
+            .neptune-hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .neptune-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .neptune-highlight {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .neptune-navbar {
+                padding: 17px 5%;
+            }
+
+            .neptune-logo {
+                font-size: 16px;
+            }
+
+            .neptune-home {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            .neptune-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .neptune-section {
+                padding: 55px 7%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .neptune-planet {
+                animation: none;
+            }
+
+            .neptune-card {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="neptune-navbar">
+        <a href="../index.html" class="neptune-logo">✦ MY UNIVERSE 2.0</a>
+        <a href="../explore.html" class="neptune-home">← SPACE MAP</a>
+    </header>
+
+    <main>
+
+        <section class="neptune-hero">
+            <div>
+                <span class="neptune-label">The Eighth Planet</span>
+                <h1>Neptune</h1>
+                <p>
+                    Far beyond Uranus lies Neptune, a deep-blue world of powerful winds,
+                    icy clouds, dark storms and mysterious moons. It is the farthest
+                    recognized planet from the Sun.
+                </p>
+                <a href="#overview" class="neptune-button">Explore Neptune ↓</a>
+            </div>
+
+            <div class="neptune-visual">
+                <div class="neptune-planet" role="img" aria-label="Illustration of the blue planet Neptune"></div>
+            </div>
+        </section>
+
+        <section class="neptune-section" id="overview">
+            <span class="neptune-subheading">A Distant World</span>
+            <h2 class="neptune-heading">Meet Neptune</h2>
+            <p class="neptune-intro">
+                Neptune is an ice giant in the outer Solar System. Although it looks
+                calm from a distance, its atmosphere contains some of the fastest
+                winds measured on any planet. Sunlight is extremely weak there,
+                and one orbit around the Sun takes about 165 Earth years.
+            </p>
+
+            <div class="neptune-grid">
+                <article class="neptune-card">
+                    <div class="neptune-stat">8th</div>
+                    <div class="neptune-stat-label">Position from the Sun</div>
+                </article>
+
+                <article class="neptune-card">
+                    <div class="neptune-stat">49,244 km</div>
+                    <div class="neptune-stat-label">Approximate mean radius</div>
+                </article>
+
+                <article class="neptune-card">
+                    <div class="neptune-stat">165 years</div>
+                    <div class="neptune-stat-label">One orbit around the Sun</div>
+                </article>
+
+                <article class="neptune-card">
+                    <div class="neptune-stat">16 hours</div>
+                    <div class="neptune-stat-label">Approximate length of a day</div>
+                </article>
+
+                <article class="neptune-card">
+                    <div class="neptune-stat">14 known</div>
+                    <div class="neptune-stat-label">Moons</div>
+                </article>
+
+                <article class="neptune-card">
+                    <div class="neptune-stat">1846</div>
+                    <div class="neptune-stat-label">Year of discovery</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="neptune-section" id="structure">
+            <span class="neptune-subheading">Beneath the Clouds</span>
+            <h2 class="neptune-heading">Inside Neptune</h2>
+            <p class="neptune-intro">
+                Neptune does not have a solid surface like Earth. Its visible clouds
+                cover deep layers of gas and hot, dense material.
+            </p>
+
+            <div class="neptune-grid">
+                <article class="neptune-card">
+                    <h3>01. Upper Atmosphere</h3>
+                    <p>
+                        The outer atmosphere contains hydrogen, helium and methane.
+                        Methane absorbs red light and helps give Neptune its blue appearance.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>02. Deep Mantle</h3>
+                    <p>
+                        Beneath the atmosphere is a hot, dense region containing water,
+                        ammonia and methane-rich materials under extreme pressure.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>03. Inner Core</h3>
+                    <p>
+                        Neptune is thought to have a dense rocky core surrounded by
+                        hotter layers. Its exact internal structure is still being studied.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="neptune-section" id="atmosphere">
+            <span class="neptune-subheading">A Dynamic Atmosphere</span>
+            <h2 class="neptune-heading">Clouds, Winds and Storms</h2>
+            <p class="neptune-intro">
+                Neptune is one of the windiest worlds in our Solar System.
+                Its atmosphere features bright clouds, dark storm systems and
+                changing weather patterns.
+            </p>
+
+            <div class="neptune-highlight">
+                <div class="neptune-highlight-box">
+                    <div class="big-number">2,000+</div>
+                    <h3>km/h Winds</h3>
+                    <p>
+                        Some winds on Neptune can exceed 2,000 kilometres per hour.
+                        The exact speed varies with location and measurement.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>What makes Neptune special?</h3>
+                    <ul class="neptune-list">
+                        <li>
+                            <strong>Blue colour:</strong> Methane absorbs much of the
+                            red light in sunlight, while atmospheric processes also
+                            contribute to Neptune's colour.
+                        </li>
+                        <li>
+                            <strong>Dark storms:</strong> Large storm systems can form
+                            and change over time in its atmosphere.
+                        </li>
+                        <li>
+                            <strong>Bright clouds:</strong> High-altitude clouds of
+                            frozen methane can appear against the blue background.
+                        </li>
+                        <li>
+                            <strong>Internal heat:</strong> Neptune radiates more energy
+                            than it receives from the Sun.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="neptune-section" id="moons">
+            <span class="neptune-subheading">Natural Satellites</span>
+            <h2 class="neptune-heading">Neptune's Moons</h2>
+            <p class="neptune-intro">
+                Neptune has 14 known moons. Triton is the largest and most unusual
+                because it travels around Neptune in the opposite direction to the
+                planet's rotation.
+            </p>
+
+            <div class="neptune-grid">
+                <article class="neptune-card">
+                    <h3>Triton</h3>
+                    <p>
+                        Neptune's largest moon has a very cold surface and nitrogen
+                        ice. Voyager 2 observed geyser-like eruptions on Triton in 1989.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Nereid</h3>
+                    <p>
+                        Nereid follows an unusually elongated orbit, taking it much
+                        closer to and farther from Neptune during its journey.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Proteus</h3>
+                    <p>
+                        Proteus is one of Neptune's largest known moons and has a
+                        heavily cratered, irregular surface.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Larissa</h3>
+                    <p>
+                        Larissa is an irregular inner moon that orbits relatively
+                        close to Neptune.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Hippocamp</h3>
+                    <p>
+                        Hippocamp is a small moon discovered in images from the
+                        Hubble Space Telescope.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Other Moons</h3>
+                    <p>
+                        The remaining moons have different sizes, shapes and orbits.
+                        Continued observations help scientists understand their origins.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="neptune-section" id="rings">
+            <span class="neptune-subheading">Around the Planet</span>
+            <h2 class="neptune-heading">Neptune's Faint Rings</h2>
+            <p class="neptune-intro">
+                Neptune has a faint ring system made of dust and darker material.
+                The rings are difficult to see from Earth and were studied in detail
+                by the Voyager 2 spacecraft.
+            </p>
+
+            <div class="neptune-grid">
+                <article class="neptune-card">
+                    <h3>Adams Ring</h3>
+                    <p>
+                        The Adams ring is one of Neptune's most prominent rings.
+                        It contains several brighter arcs.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Dusty Material</h3>
+                    <p>
+                        Neptune's rings contain dust and small particles that reflect
+                        little sunlight, making the rings faint.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Ring Arcs</h3>
+                    <p>
+                        Some sections of the Adams ring appear brighter than others.
+                        Their structure is influenced by Neptune's moons and gravity.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="neptune-section" id="exploration">
+            <span class="neptune-subheading">Exploring the Unknown</span>
+            <h2 class="neptune-heading">Space Missions</h2>
+            <p class="neptune-intro">
+                Neptune is so distant that only one spacecraft has flown past it.
+                Telescopes continue to help scientists study the planet from afar.
+            </p>
+
+            <div class="neptune-grid">
+                <article class="neptune-card">
+                    <h3>Voyager 2 — 1989</h3>
+                    <p>
+                        Voyager 2 made the first and, so far, only close flyby of
+                        Neptune. It studied the atmosphere, rings and moons.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Hubble Space Telescope</h3>
+                    <p>
+                        Hubble has monitored Neptune's changing clouds, storms and
+                        atmospheric features over many years.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>Earth-Based Telescopes</h3>
+                    <p>
+                        Powerful observatories use visible and infrared light to
+                        study Neptune's weather and atmospheric changes.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="neptune-section" id="facts">
+            <span class="neptune-subheading">Quick Discoveries</span>
+            <h2 class="neptune-heading">Interesting Facts About Neptune</h2>
+
+            <div class="neptune-grid">
+                <article class="neptune-card">
+                    <h3><span class="neptune-fact-number">1</span>Very Far Away</h3>
+                    <p>
+                        Neptune is about 30 times farther from the Sun than Earth
+                        is on average.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3><span class="neptune-fact-number">2</span>Long Year</h3>
+                    <p>
+                        Since Neptune takes about 165 Earth years to orbit the Sun,
+                        its seasons last for decades.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3><span class="neptune-fact-number">3</span>First Predicted</h3>
+                    <p>
+                        Mathematical calculations helped scientists predict Neptune's
+                        position before it was observed in 1846.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3><span class="neptune-fact-number">4</span>Ice Giant</h3>
+                    <p>
+                        Neptune is classified as an ice giant, unlike Jupiter and
+                        Saturn, which are classified as gas giants.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3><span class="neptune-fact-number">5</span>Captured Triton?</h3>
+                    <p>
+                        Triton's unusual backward orbit suggests it may have been
+                        captured by Neptune's gravity long ago.
+                    </p>
+                </article>
+
+                <article class="neptune-card">
+                    <h3><span class="neptune-fact-number">6</span>Powerful Weather</h3>
+                    <p>
+                        Despite receiving very little sunlight, Neptune has an
+                        active atmosphere with fast winds and changing storms.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="neptune-section neptune-reading" id="reading">
+            <span class="neptune-subheading">Learn More</span>
+            <h2 class="neptune-heading">Neptune Reading Corner</h2>
+            <p class="neptune-intro">
+                Explore these trusted space-science resources to learn more about
+                Neptune, its moons and the Voyager mission.
+            </p>
+
+            <div class="neptune-grid">
+                <article class="neptune-card">
+                    <h3>NASA Solar System</h3>
+                    <p>
+                        Read about Neptune's atmosphere, size, orbit and moons.
+                    </p>
+                    <a href="https://science.nasa.gov/neptune/"
+                       target="_blank" rel="noopener noreferrer">
+                        Explore NASA's Neptune page ↗
+                    </a>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>NASA Voyager 2</h3>
+                    <p>
+                        Discover the spacecraft that explored Neptune in 1989.
+                    </p>
+                    <a href="https://science.nasa.gov/mission/voyager/"
+                       target="_blank" rel="noopener noreferrer">
+                        Explore the Voyager mission ↗
+                    </a>
+                </article>
+
+                <article class="neptune-card">
+                    <h3>NASA Hubble</h3>
+                    <p>
+                        Learn how the Hubble Space Telescope observes distant planets.
+                    </p>
+                    <a href="https://science.nasa.gov/mission/hubble/"
+                       target="_blank" rel="noopener noreferrer">
+                        Explore Hubble ↗
+                    </a>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="neptune-bottom-nav" aria-label="Planet navigation">
+        <a href="uranus.html">← Previous: Uranus</a>
+        <a href="../explore.html">✦ Return to Space Map</a>
+        <a href="../index.html">Back to Home →</a>
+    </nav>
+
+    <footer class="neptune-footer">
+        <p>✦ MY UNIVERSE 2.0 | Discover the mysteries of Neptune and beyond.</p>
+    </footer>
+
+</body>
+</html>
+```

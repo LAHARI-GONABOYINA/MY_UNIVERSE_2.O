@@ -1,0 +1,1194 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth | MY UNIVERSE 2.0</title>
+    <link rel="stylesheet" href="../main.css">
+
+    <style>
+        :root {
+            --earth-blue: #4da6ff;
+            --earth-green: #53d68a;
+            --earth-light: #c5f3ff;
+            --space-dark: #050816;
+            --space-card: rgba(17, 25, 48, 0.82);
+            --space-border: rgba(77, 166, 255, 0.24);
+            --text-main: #f5f7ff;
+            --text-muted: #aab5ce;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(77, 166, 255, 0.10), transparent 30%),
+                radial-gradient(circle at 85% 40%, rgba(83, 214, 138, 0.07), transparent 28%),
+                var(--space-dark);
+            color: var(--text-main);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .earth-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 22px 8%;
+            border-bottom: 1px solid var(--space-border);
+            background: rgba(5, 8, 22, 0.88);
+        }
+
+        .earth-logo {
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .earth-logo span {
+            color: var(--earth-blue);
+        }
+
+        .earth-home {
+            color: var(--earth-light);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .earth-home:hover {
+            color: var(--earth-green);
+        }
+
+        .earth-hero {
+            min-height: 590px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            padding: 75px 8%;
+            overflow: hidden;
+        }
+
+        .earth-hero-content {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .earth-eyebrow {
+            color: var(--earth-blue);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .earth-hero h1 {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        .earth-hero h1 span {
+            color: var(--earth-blue);
+            display: block;
+        }
+
+        .earth-hero p {
+            max-width: 580px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .earth-button {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--earth-blue), var(--earth-green));
+            color: #061526;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .earth-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(77, 166, 255, 0.22);
+        }
+
+        .earth-visual {
+            flex: 0 0 330px;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 28% 25%, #7ee7ff 0%, #278de0 32%, #1251a0 68%, #061b48 100%);
+            box-shadow:
+                inset -35px -25px 65px rgba(0, 0, 0, 0.55),
+                inset 12px 8px 35px rgba(190, 244, 255, 0.30),
+                0 0 45px rgba(77, 166, 255, 0.25);
+            animation: earth-float 6s ease-in-out infinite;
+        }
+
+        .earth-visual::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background:
+                radial-gradient(ellipse at 35% 28%,
+                    transparent 0 12%,
+                    rgba(83, 214, 138, 0.9) 13% 19%,
+                    transparent 20%),
+                radial-gradient(ellipse at 62% 48%,
+                    rgba(83, 214, 138, 0.95) 0 12%,
+                    transparent 13%),
+                radial-gradient(ellipse at 35% 70%,
+                    rgba(83, 214, 138, 0.9) 0 9%,
+                    transparent 10%),
+                radial-gradient(ellipse at 75% 75%,
+                    rgba(83, 214, 138, 0.8) 0 7%,
+                    transparent 8%);
+            transform: rotate(-18deg);
+        }
+
+        .earth-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(
+                115deg,
+                transparent 38%,
+                rgba(0, 0, 0, 0.55) 100%
+            );
+            box-shadow: inset 0 0 0 5px rgba(125, 220, 255, 0.12);
+        }
+
+        @keyframes earth-float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-14px) rotate(3deg);
+            }
+        }
+
+        .earth-section {
+            padding: 65px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .earth-section-heading {
+            margin-bottom: 35px;
+            max-width: 800px;
+        }
+
+        .earth-section-heading .earth-eyebrow {
+            margin-bottom: 8px;
+        }
+
+        .earth-section-heading h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .earth-section-heading p {
+            color: var(--text-muted);
+        }
+
+        .earth-overview {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .earth-card {
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid var(--space-border);
+            background: var(--space-card);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .earth-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(77, 166, 255, 0.6);
+        }
+
+        .earth-card h3 {
+            color: var(--earth-light);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .earth-card p {
+            color: var(--text-muted);
+        }
+
+        .earth-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .earth-stat {
+            padding: 22px 18px;
+            border-radius: 15px;
+            border: 1px solid var(--space-border);
+            background: rgba(77, 166, 255, 0.04);
+        }
+
+        .earth-stat strong {
+            display: block;
+            color: var(--earth-blue);
+            font-size: 1.55rem;
+            margin-bottom: 5px;
+        }
+
+        .earth-stat span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .earth-layers {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .earth-layer {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .earth-layer-number {
+            flex: 0 0 45px;
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #061526;
+            background: linear-gradient(135deg, var(--earth-blue), var(--earth-green));
+            font-weight: 800;
+        }
+
+        .earth-layer h3 {
+            color: var(--earth-light);
+            margin-bottom: 6px;
+        }
+
+        .earth-layer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .earth-highlight {
+            margin-top: 25px;
+            padding: 22px 25px;
+            border-left: 4px solid var(--earth-green);
+            border-radius: 0 12px 12px 0;
+            background: rgba(83, 214, 138, 0.07);
+            color: var(--text-muted);
+        }
+
+        .earth-highlight strong {
+            color: var(--earth-light);
+        }
+
+        .earth-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .earth-fact-card {
+            padding: 25px;
+            border-radius: 17px;
+            border: 1px solid var(--space-border);
+            background: var(--space-card);
+            transition: transform 0.3s ease;
+        }
+
+        .earth-fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .earth-fact-icon {
+            font-size: 2rem;
+            margin-bottom: 13px;
+        }
+
+        .earth-fact-card h3 {
+            color: var(--earth-light);
+            margin-bottom: 10px;
+        }
+
+        .earth-fact-card p {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+        }
+
+        .earth-resources {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .earth-resource {
+            display: block;
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid var(--space-border);
+            background: rgba(17, 25, 48, 0.65);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .earth-resource:hover {
+            background: rgba(77, 166, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .earth-resource h3 {
+            color: var(--earth-light);
+            margin-bottom: 7px;
+        }
+
+        .earth-resource p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .earth-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .earth-navigation a {
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--space-border);
+            color: var(--earth-light);
+            transition: background 0.3s ease;
+        }
+
+        .earth-navigation a:hover {
+            background: rgba(77, 166, 255, 0.1);
+        }
+
+        .earth-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 28px 8%;
+            border-top: 1px solid var(--space-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .earth-footer strong {
+            color: var(--earth-blue);
+        }
+
+        @media (max-width: 800px) {
+            .earth-hero {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                padding-top: 45px;
+            }
+
+            .earth-visual {
+                align-self: center;
+                width: 260px;
+                height: 260px;
+                flex-basis: 260px;
+            }
+
+            .earth-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .earth-facts-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 550px) {
+            .earth-navbar {
+                padding: 18px 5%;
+                flex-wrap: wrap;
+            }
+
+            .earth-logo {
+                font-size: 0.95rem;
+            }
+
+            .earth-hero,
+            .earth-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .earth-hero h1 {
+                font-size: 3.4rem;
+            }
+
+            .earth-visual {
+                width: 220px;
+                height: 220px;
+                flex-basis: 220px;
+            }
+
+            .earth-facts-grid,
+            .earth-layers,
+            .earth-resources {
+                grid-template-columns: 1fr;
+            }
+
+            .earth-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .earth-stat {
+                padding: 16px 12px;
+            }
+
+            .earth-stat strong {
+                font-size: 1.25rem;
+            }
+
+            .earth-navigation {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .earth-navigation a {
+                text-align: center;
+            }
+
+            .earth-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .earth-visual {
+                animation: none;
+            }
+
+            .earth-card,
+            .earth-button,
+            .earth-resource,
+            .earth-fact-card {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="earth-navbar">
+        <a href="../index.html" class="earth-logo">
+            ✦ MY UNIVERSE <span>2.0</span>
+        </a>
+
+        <a href="../explore.html" class="earth-home">
+            ← SPACE MAP
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="earth-hero">
+            <div class="earth-hero-content">
+                <div class="earth-eyebrow">SOLAR SYSTEM / PLANET 03</div>
+
+                <h1>
+                    PLANET
+                    <span>EARTH</span>
+                </h1>
+
+                <p>
+                    Welcome to Earth, our home planet and the third
+                    planet from the Sun. With vast oceans, diverse
+                    landscapes, a protective atmosphere, and an
+                    extraordinary variety of life, Earth is the only
+                    world currently known to support life.
+                </p>
+
+                <a href="#earth-overview" class="earth-button">
+                    BEGIN EXPLORATION ↓
+                </a>
+            </div>
+
+            <div
+                class="earth-visual"
+                role="img"
+                aria-label="Stylized blue and green illustration of planet Earth">
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="earth-section" id="earth-overview">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">01 / PLANET PROFILE</div>
+                <h2>Meet Earth</h2>
+                <p>
+                    Our home is a dynamic rocky planet with liquid
+                    water on its surface, a life-supporting atmosphere,
+                    and a magnetic field.
+                </p>
+            </div>
+
+            <div class="earth-overview">
+                <article class="earth-card">
+                    <h3>Our Home in Space</h3>
+
+                    <p>
+                        Earth formed about 4.54 billion years ago.
+                        Its surface includes continents, oceans,
+                        mountains, deserts, forests, and polar regions.
+                        Water covers roughly 71% of its surface.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Earth's atmosphere helps regulate temperature
+                        and provides gases essential to many forms
+                        of life. Its magnetic field also helps protect
+                        the planet from charged particles from space.
+                    </p>
+                </article>
+
+                <div class="earth-stats">
+                    <div class="earth-stat">
+                        <strong>4.54B</strong>
+                        <span>Approximate age in years</span>
+                    </div>
+
+                    <div class="earth-stat">
+                        <strong>12,742 km</strong>
+                        <span>Average diameter</span>
+                    </div>
+
+                    <div class="earth-stat">
+                        <strong>365.25 days</strong>
+                        <span>One orbit around the Sun</span>
+                    </div>
+
+                    <div class="earth-stat">
+                        <strong>1</strong>
+                        <span>Known natural moon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internal Structure -->
+        <section class="earth-section" id="earth-structure">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">02 / INSIDE THE PLANET</div>
+                <h2>The Internal Structure of Earth</h2>
+                <p>
+                    Earth has several layers, each with different
+                    properties and roles in the planet's evolution.
+                </p>
+            </div>
+
+            <div class="earth-layers">
+                <article class="earth-card earth-layer">
+                    <div class="earth-layer-number">01</div>
+
+                    <div>
+                        <h3>Inner Core</h3>
+                        <p>
+                            The inner core is a solid, extremely hot
+                            region composed mainly of iron and nickel.
+                            Enormous pressure keeps it solid despite
+                            its high temperature.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="earth-card earth-layer">
+                    <div class="earth-layer-number">02</div>
+
+                    <div>
+                        <h3>Outer Core</h3>
+                        <p>
+                            The outer core is a layer of liquid metal.
+                            Its movement helps generate Earth's
+                            magnetic field.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="earth-card earth-layer">
+                    <div class="earth-layer-number">03</div>
+
+                    <div>
+                        <h3>Mantle</h3>
+                        <p>
+                            The mantle is a thick layer of hot rock.
+                            Slow movement within it helps drive
+                            the motion of tectonic plates.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="earth-card earth-layer">
+                    <div class="earth-layer-number">04</div>
+
+                    <div>
+                        <h3>Crust</h3>
+                        <p>
+                            The crust is Earth's thin outer solid
+                            layer. It forms the continents and
+                            ocean floors and is divided into
+                            moving tectonic plates.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="earth-highlight">
+                <strong>Did you know?</strong>
+                Earth's magnetic field is generated largely by
+                the movement of electrically conducting liquid
+                metal in the outer core.
+            </div>
+        </section>
+
+        <!-- Composition -->
+        <section class="earth-section" id="earth-composition">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">03 / WHAT IS EARTH MADE OF?</div>
+                <h2>Composition of Earth</h2>
+                <p>
+                    Earth contains solid rock, liquid water,
+                    a gaseous atmosphere, and a metallic interior.
+                </p>
+            </div>
+
+            <div class="earth-facts-grid">
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🪨</div>
+                    <h3>Rock and Minerals</h3>
+                    <p>
+                        Earth's crust contains a wide variety of
+                        rocks and minerals that form mountains,
+                        plains, and the ocean floor.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🌊</div>
+                    <h3>Liquid Water</h3>
+                    <p>
+                        Oceans, rivers, lakes, glaciers, and
+                        groundwater form part of Earth's water
+                        system and support many living organisms.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🌬️</div>
+                    <h3>Atmosphere</h3>
+                    <p>
+                        Earth's atmosphere consists mainly of
+                        nitrogen and oxygen, along with smaller
+                        amounts of other gases.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Atmosphere and Climate -->
+        <section class="earth-section" id="earth-atmosphere">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">04 / OUR PROTECTIVE SHIELD</div>
+                <h2>Atmosphere and Climate</h2>
+                <p>
+                    Earth's atmosphere and climate systems help
+                    create conditions in which life can thrive.
+                </p>
+            </div>
+
+            <div class="earth-facts-grid">
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">☁️</div>
+                    <h3>Atmospheric Layers</h3>
+                    <p>
+                        The atmosphere includes the troposphere,
+                        stratosphere, mesosphere, thermosphere,
+                        and exosphere. Each layer has distinct
+                        characteristics.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🌡️</div>
+                    <h3>Climate Regulation</h3>
+                    <p>
+                        The atmosphere, oceans, land, and ice
+                        interact to distribute heat and influence
+                        weather and long-term climate.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🛡️</div>
+                    <h3>Natural Protection</h3>
+                    <p>
+                        The atmosphere blocks or absorbs much
+                        harmful solar radiation, while the
+                        magnetic field deflects many charged
+                        particles from the Sun.
+                    </p>
+                </article>
+            </div>
+
+            <div class="earth-highlight">
+                <strong>Why is Earth habitable?</strong>
+                Earth's liquid water, suitable temperatures,
+                atmosphere, energy sources, and chemical building
+                blocks support the life we know.
+            </div>
+        </section>
+
+        <!-- Life on Earth -->
+        <section class="earth-section" id="earth-life">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">05 / A LIVING WORLD</div>
+                <h2>Life on Earth</h2>
+                <p>
+                    Earth is home to an extraordinary diversity
+                    of organisms living in many different environments.
+                </p>
+            </div>
+
+            <div class="earth-layers">
+                <article class="earth-card">
+                    <h3>Land Ecosystems</h3>
+
+                    <p>
+                        Forests, grasslands, deserts, and tundra
+                        support plants, animals, fungi, and
+                        countless microorganisms adapted to
+                        their surroundings.
+                    </p>
+                </article>
+
+                <article class="earth-card">
+                    <h3>Marine Ecosystems</h3>
+
+                    <p>
+                        Oceans contain habitats ranging from
+                        sunlit coral reefs to deep-sea environments.
+                        Marine organisms play important roles
+                        in global food webs and nutrient cycles.
+                    </p>
+                </article>
+
+                <article class="earth-card">
+                    <h3>Biodiversity</h3>
+
+                    <p>
+                        Biodiversity includes the variety of
+                        species, genes, and ecosystems. Protecting
+                        it helps maintain the resilience of
+                        natural systems.
+                    </p>
+                </article>
+
+                <article class="earth-card">
+                    <h3>Human Responsibility</h3>
+
+                    <p>
+                        Pollution, habitat destruction, climate
+                        change, and resource overuse can threaten
+                        ecosystems. Conservation helps protect
+                        Earth's living systems.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Moon -->
+        <section class="earth-section" id="earth-moon">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">06 / OUR NATURAL SATELLITE</div>
+                <h2>Earth and the Moon</h2>
+                <p>
+                    Earth's Moon is a major feature of our
+                    planet's celestial neighborhood.
+                </p>
+            </div>
+
+            <div class="earth-overview">
+                <article class="earth-card">
+                    <h3>The Moon</h3>
+
+                    <p>
+                        The Moon is Earth's only natural satellite.
+                        It orbits Earth and reflects sunlight,
+                        producing the familiar phases seen from
+                        our planet.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        The Moon's gravitational pull is the main
+                        driver of Earth's ocean tides. It also
+                        helps stabilize changes in Earth's axial tilt
+                        over long periods.
+                    </p>
+                </article>
+
+                <div class="earth-stats">
+                    <div class="earth-stat">
+                        <strong>384,400 km</strong>
+                        <span>Average distance from Earth</span>
+                    </div>
+
+                    <div class="earth-stat">
+                        <strong>27.3 days</strong>
+                        <span>Approximate orbital period</span>
+                    </div>
+
+                    <div class="earth-stat">
+                        <strong>4.5B years</strong>
+                        <span>Approximate age</span>
+                    </div>
+
+                    <div class="earth-stat">
+                        <strong>1</strong>
+                        <span>Earth's natural moon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Importance -->
+        <section class="earth-section" id="earth-importance">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">07 / OUR PLACE IN THE UNIVERSE</div>
+                <h2>Why Earth Matters</h2>
+                <p>
+                    Earth is our home and the only known planet
+                    where life has been confirmed.
+                </p>
+            </div>
+
+            <div class="earth-facts-grid">
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">💧</div>
+                    <h3>Water for Life</h3>
+                    <p>
+                        Liquid water supports essential biological
+                        processes and shapes Earth's landscapes
+                        and climate.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🌱</div>
+                    <h3>Natural Resources</h3>
+                    <p>
+                        Earth's soil, water, minerals, forests,
+                        and energy resources support ecosystems
+                        and human societies.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🔭</div>
+                    <h3>Understanding Other Worlds</h3>
+                    <p>
+                        Studying Earth helps scientists compare
+                        planets and search for potentially
+                        habitable environments elsewhere.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Space Exploration -->
+        <section class="earth-section" id="earth-missions">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">08 / OBSERVING OUR PLANET</div>
+                <h2>Earth from Space</h2>
+                <p>
+                    Satellites and space missions help us observe
+                    our planet on a global scale.
+                </p>
+            </div>
+
+            <div class="earth-layers">
+                <article class="earth-card">
+                    <h3>Earth Observation Satellites</h3>
+
+                    <p>
+                        Satellites measure clouds, rainfall,
+                        ocean conditions, vegetation, ice cover,
+                        and many other features of Earth's
+                        changing environment.
+                    </p>
+                </article>
+
+                <article class="earth-card">
+                    <h3>International Space Station</h3>
+
+                    <p>
+                        The International Space Station provides
+                        a platform for scientific research in
+                        low Earth orbit and offers unique views
+                        of our planet.
+                    </p>
+                </article>
+
+                <article class="earth-card">
+                    <h3>Weather Satellites</h3>
+
+                    <p>
+                        Weather satellites help meteorologists
+                        track storms, monitor cloud systems,
+                        and improve forecasts.
+                    </p>
+                </article>
+
+                <article class="earth-card">
+                    <h3>Climate Monitoring</h3>
+
+                    <p>
+                        Space-based instruments track long-term
+                        changes in temperature, sea level, ice,
+                        and atmospheric gases.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section class="earth-section" id="earth-facts">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">09 / DID YOU KNOW?</div>
+                <h2>Interesting Facts About Earth</h2>
+                <p>
+                    Discover some fascinating features of
+                    our home planet.
+                </p>
+            </div>
+
+            <div class="earth-facts-grid">
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🌊</div>
+                    <h3>The Blue Planet</h3>
+                    <p>
+                        Earth appears blue from space because
+                        much of its surface is covered by oceans.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🌙</div>
+                    <h3>One Natural Moon</h3>
+                    <p>
+                        Earth has one permanent natural satellite,
+                        which influences tides and illuminates
+                        the night sky by reflecting sunlight.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🧲</div>
+                    <h3>A Magnetic Field</h3>
+                    <p>
+                        Earth's magnetic field creates a protective
+                        region around the planet called the
+                        magnetosphere.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">🌍</div>
+                    <h3>Moving Continents</h3>
+                    <p>
+                        Earth's tectonic plates move slowly,
+                        changing the positions of continents
+                        and ocean basins over millions of years.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">💧</div>
+                    <h3>Abundant Surface Water</h3>
+                    <p>
+                        About 71% of Earth's surface is covered
+                        by water, although most of it is salty
+                        ocean water.
+                    </p>
+                </article>
+
+                <article class="earth-fact-card">
+                    <div class="earth-fact-icon">☀️</div>
+                    <h3>Perfect for Life?</h3>
+                    <p>
+                        Earth has conditions suitable for the
+                        life we know, but scientists continue
+                        investigating how life began and whether
+                        it exists elsewhere.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Reading Corner -->
+        <section class="earth-section" id="earth-resources">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">10 / EXPLORE FURTHER</div>
+                <h2>Reading Corner</h2>
+                <p>
+                    Continue learning about Earth through
+                    trusted science resources.
+                </p>
+            </div>
+
+            <div class="earth-resources">
+                <a
+                    href="https://science.nasa.gov/earth/"
+                    class="earth-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>NASA — Earth</h3>
+
+                    <p>
+                        Explore Earth's systems, atmosphere,
+                        oceans, climate, and scientific discoveries.
+                    </p>
+                </a>
+
+                <a
+                    href="https://earthobservatory.nasa.gov/"
+                    class="earth-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>NASA Earth Observatory</h3>
+
+                    <p>
+                        Discover satellite images and observations
+                        showing how Earth changes over time.
+                    </p>
+                </a>
+
+                <a
+                    href="https://science.nasa.gov/earth/earth-observing-system/"
+                    class="earth-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>Earth Observation</h3>
+
+                    <p>
+                        Learn how space-based instruments help
+                        scientists monitor Earth's environment.
+                    </p>
+                </a>
+
+                <a
+                    href="https://www.noaa.gov/"
+                    class="earth-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>NOAA</h3>
+
+                    <p>
+                        Explore information about weather,
+                        oceans, climate, and environmental science.
+                    </p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Page Navigation -->
+        <section class="earth-section">
+            <div class="earth-section-heading">
+                <div class="earth-eyebrow">11 / CONTINUE YOUR JOURNEY</div>
+                <h2>Explore More Worlds</h2>
+                <p>
+                    Continue your journey through MY UNIVERSE 2.0
+                    and discover more of the solar system.
+                </p>
+            </div>
+
+            <div class="earth-navigation">
+                <a href="venus.html">← Previous: Venus</a>
+
+                <a href="../explore.html">✦ Return to Space Map</a>
+
+                <a href="mars.html">Next: Mars →</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="earth-footer">
+        <p>
+            © 2026 <strong>MY UNIVERSE 2.0</strong>
+        </p>
+
+        <p>
+            Our home, our planet, our universe. 🌍
+        </p>
+    </footer>
+
+</body>
+</html>
+```

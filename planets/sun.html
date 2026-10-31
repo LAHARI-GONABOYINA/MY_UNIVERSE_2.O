@@ -1,0 +1,1201 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Sun | My Universe 2.0</title>
+
+    <link rel="stylesheet" href="../main.css">
+
+    <style>
+        :root {
+            --sun-gold: #ffbf47;
+            --sun-orange: #ff7b32;
+            --sun-light: #ffe6a3;
+            --space-dark: #050816;
+            --space-card: rgba(17, 25, 48, 0.82);
+            --space-border: rgba(255, 191, 71, 0.22);
+            --text-main: #f5f7ff;
+            --text-muted: #aab5ce;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255, 123, 50, 0.12),
+                    transparent 35%
+                ),
+                var(--space-dark);
+            color: var(--text-main);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--sun-light);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--sun-gold);
+        }
+
+        .sun-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 7%;
+            border-bottom: 1px solid var(--space-border);
+            background: rgba(5, 8, 22, 0.9);
+        }
+
+        .sun-logo {
+            color: white;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .sun-logo span {
+            color: var(--sun-gold);
+        }
+
+        .sun-home {
+            border: 1px solid var(--space-border);
+            border-radius: 30px;
+            padding: 9px 18px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .sun-hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 520px;
+            padding: 90px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background:
+                radial-gradient(
+                    circle at 78% 45%,
+                    rgba(255, 132, 37, 0.2),
+                    transparent 35%
+                );
+        }
+
+        .sun-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 650px;
+        }
+
+        .sun-eyebrow {
+            color: var(--sun-gold);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .sun-hero h1 {
+            margin: 16px 0;
+            font-size: clamp(48px, 8vw, 88px);
+            line-height: 1.05;
+        }
+
+        .sun-hero h1 span {
+            color: var(--sun-gold);
+        }
+
+        .sun-hero p {
+            max-width: 580px;
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        .sun-visual {
+            flex-shrink: 0;
+            width: clamp(180px, 27vw, 330px);
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            font-size: clamp(100px, 18vw, 220px);
+            background:
+                radial-gradient(
+                    circle,
+                    #fff8cb 0%,
+                    #ffd56b 25%,
+                    #ff9b36 55%,
+                    #e84c20 72%,
+                    rgba(232, 76, 32, 0.05) 74%,
+                    transparent 76%
+                );
+            filter: drop-shadow(0 0 45px rgba(255, 145, 35, 0.45));
+            animation: sunPulse 5s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% {
+                filter: drop-shadow(
+                    0 0 35px rgba(255, 145, 35, 0.35)
+                );
+                transform: scale(1);
+            }
+
+            50% {
+                filter: drop-shadow(
+                    0 0 60px rgba(255, 145, 35, 0.6)
+                );
+                transform: scale(1.035);
+            }
+        }
+
+        .sun-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 13px 22px;
+            border-radius: 30px;
+            background: linear-gradient(
+                110deg,
+                var(--sun-gold),
+                var(--sun-orange)
+            );
+            color: #17101a;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .sun-button:hover {
+            color: #17101a;
+            transform: translateY(-2px);
+        }
+
+        .sun-section {
+            padding: 65px 8%;
+        }
+
+        .sun-section-heading {
+            margin-bottom: 30px;
+        }
+
+        .sun-section-heading span {
+            color: var(--sun-gold);
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .sun-section-heading h2 {
+            margin: 8px 0;
+            font-size: clamp(27px, 4vw, 42px);
+            line-height: 1.2;
+        }
+
+        .sun-section-heading p {
+            max-width: 720px;
+            color: var(--text-muted);
+        }
+
+        .sun-overview {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .sun-card {
+            padding: 26px;
+            border: 1px solid var(--space-border);
+            border-radius: 18px;
+            background: var(--space-card);
+        }
+
+        .sun-card h3 {
+            margin-top: 0;
+            color: var(--sun-light);
+        }
+
+        .sun-card p {
+            color: var(--text-muted);
+        }
+
+        .sun-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .sun-stat {
+            padding: 19px;
+            border: 1px solid var(--space-border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .sun-stat span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .sun-stat strong {
+            display: block;
+            margin-top: 5px;
+            color: var(--sun-gold);
+            font-size: 21px;
+        }
+
+        .sun-stat small {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        .sun-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .sun-fact-card {
+            padding: 23px;
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            background: var(--space-card);
+        }
+
+        .sun-fact-icon {
+            font-size: 30px;
+        }
+
+        .sun-fact-card h3 {
+            color: var(--sun-light);
+            font-size: 17px;
+        }
+
+        .sun-fact-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .sun-layers {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .sun-layer {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 20px;
+            border-left: 3px solid var(--sun-orange);
+            border-radius: 8px;
+            background: var(--space-card);
+        }
+
+        .sun-layer-number {
+            color: var(--sun-gold);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sun-layer h3 {
+            margin: 0 0 5px;
+            font-size: 17px;
+        }
+
+        .sun-layer p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .sun-highlight {
+            padding: 30px;
+            border: 1px solid var(--space-border);
+            border-radius: 18px;
+            background: linear-gradient(
+                120deg,
+                rgba(255, 123, 50, 0.13),
+                rgba(255, 191, 71, 0.04)
+            );
+        }
+
+        .sun-highlight h3 {
+            color: var(--sun-gold);
+        }
+
+        .sun-highlight p,
+        .sun-highlight li {
+            color: var(--text-muted);
+        }
+
+        .sun-highlight li {
+            margin-bottom: 10px;
+        }
+
+        .sun-resources {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .sun-resource {
+            display: block;
+            padding: 23px;
+            border: 1px solid var(--space-border);
+            border-radius: 15px;
+            background: var(--space-card);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .sun-resource:hover {
+            transform: translateY(-4px);
+            border-color: var(--sun-gold);
+        }
+
+        .sun-resource h3 {
+            margin-top: 0;
+            color: var(--sun-light);
+        }
+
+        .sun-resource p {
+            margin-bottom: 0;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .sun-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 30px 8%;
+            border-top: 1px solid var(--space-border);
+            border-bottom: 1px solid var(--space-border);
+        }
+
+        .sun-navigation a {
+            padding: 12px 17px;
+            border: 1px solid var(--space-border);
+            border-radius: 25px;
+            font-size: 12px;
+        }
+
+        .sun-footer {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 800px) {
+            .sun-hero {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                padding-top: 45px;
+            }
+
+            .sun-visual {
+                align-self: center;
+            }
+
+            .sun-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .sun-facts-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 550px) {
+            .sun-navbar {
+                padding: 16px 5%;
+            }
+
+            .sun-logo {
+                font-size: 13px;
+            }
+
+            .sun-home {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+
+            .sun-section {
+                padding: 45px 6%;
+            }
+
+            .sun-facts-grid,
+            .sun-layers,
+            .sun-resources {
+                grid-template-columns: 1fr;
+            }
+
+            .sun-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .sun-stat {
+                padding: 13px;
+            }
+
+            .sun-stat strong {
+                font-size: 17px;
+            }
+
+            .sun-navigation {
+                flex-wrap: wrap;
+                padding: 22px 6%;
+            }
+
+            .sun-footer {
+                flex-direction: column;
+                padding: 22px 6%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="sun-navbar">
+
+        <a href="../index.html" class="sun-logo">
+            ✦ MY UNIVERSE <span>2.0</span>
+        </a>
+
+        <a href="../explore.html" class="sun-home">
+            ← SPACE MAP
+        </a>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="sun-hero">
+
+        <div class="sun-hero-content">
+
+            <div class="sun-eyebrow">
+                SOLAR SYSTEM / STAR 00
+            </div>
+
+            <h1>
+                THE <span>SUN</span>
+            </h1>
+
+            <p>
+                The brilliant star at the centre of our Solar System.
+                Its gravity guides planetary orbits, while its energy
+                provides the light and warmth that make life on Earth possible.
+            </p>
+
+            <a href="#sun-overview" class="sun-button">
+                BEGIN EXPLORATION ↓
+            </a>
+
+        </div>
+
+        <div class="sun-visual" role="img" aria-label="Illustration of the Sun">
+            ☀
+        </div>
+
+    </section>
+
+
+    <!-- OVERVIEW -->
+    <section class="sun-section" id="sun-overview">
+
+        <div class="sun-section-heading">
+            <span>01 / INTRODUCTION</span>
+            <h2>Meet Our Nearest Star</h2>
+
+            <p>
+                The Sun is a nearly spherical ball of hot plasma.
+                It produces energy through nuclear fusion in its core
+                and contains more than 99.8% of the total mass of the
+                Solar System.
+            </p>
+        </div>
+
+        <div class="sun-overview">
+
+            <article class="sun-card">
+
+                <h3>What is the Sun?</h3>
+
+                <p>
+                    The Sun is a G-type main-sequence star, often called
+                    a yellow dwarf. It formed approximately 4.6 billion
+                    years ago from a cloud of gas and dust.
+                </p>
+
+                <p>
+                    Its gravitational pull keeps Earth and the other
+                    planets in orbit. Energy generated by fusion in
+                    the Sun's core travels outward and eventually
+                    escapes into space as sunlight and other radiation.
+                </p>
+
+                <p>
+                    The Sun is not a solid object. Its visible surface
+                    is called the photosphere, and its outer atmosphere
+                    extends millions of kilometres into space.
+                </p>
+
+            </article>
+
+
+            <div class="sun-stats">
+
+                <div class="sun-stat">
+                    <span>AGE</span>
+                    <strong>4.6 Billion</strong>
+                    <small>Years</small>
+                </div>
+
+                <div class="sun-stat">
+                    <span>DIAMETER</span>
+                    <strong>1.39 Million</strong>
+                    <small>Kilometres, approximately</small>
+                </div>
+
+                <div class="sun-stat">
+                    <span>CORE TEMPERATURE</span>
+                    <strong>15 Million °C</strong>
+                    <small>Approximately</small>
+                </div>
+
+                <div class="sun-stat">
+                    <span>DISTANCE FROM EARTH</span>
+                    <strong>149.6 Million</strong>
+                    <small>Kilometres, on average</small>
+                </div>
+
+                <div class="sun-stat">
+                    <span>STAR TYPE</span>
+                    <strong>G2V</strong>
+                    <small>Main-sequence star</small>
+                </div>
+
+                <div class="sun-stat">
+                    <span>LIGHT TRAVEL TIME</span>
+                    <strong>8 min 20 sec</strong>
+                    <small>Approximately</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERNAL STRUCTURE -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>02 / STRUCTURE</span>
+            <h2>Inside the Sun</h2>
+
+            <p>
+                The Sun has several internal layers and atmospheric
+                regions. Each plays a role in how energy is produced
+                and released.
+            </p>
+        </div>
+
+        <div class="sun-layers">
+
+            <article class="sun-layer">
+                <div class="sun-layer-number">01</div>
+                <div>
+                    <h3>Core</h3>
+                    <p>
+                        The central region where nuclear fusion converts
+                        hydrogen into helium and releases energy.
+                    </p>
+                </div>
+            </article>
+
+            <article class="sun-layer">
+                <div class="sun-layer-number">02</div>
+                <div>
+                    <h3>Radiative Zone</h3>
+                    <p>
+                        Energy moves outward mainly through the absorption
+                        and re-emission of radiation.
+                    </p>
+                </div>
+            </article>
+
+            <article class="sun-layer">
+                <div class="sun-layer-number">03</div>
+                <div>
+                    <h3>Convective Zone</h3>
+                    <p>
+                        Hot plasma rises, cools, and sinks, transporting
+                        energy toward the Sun's surface.
+                    </p>
+                </div>
+            </article>
+
+            <article class="sun-layer">
+                <div class="sun-layer-number">04</div>
+                <div>
+                    <h3>Photosphere</h3>
+                    <p>
+                        The visible layer from which most of the sunlight
+                        we see originates.
+                    </p>
+                </div>
+            </article>
+
+            <article class="sun-layer">
+                <div class="sun-layer-number">05</div>
+                <div>
+                    <h3>Chromosphere</h3>
+                    <p>
+                        A layer of the Sun's atmosphere above the
+                        photosphere, visible under certain observing
+                        conditions.
+                    </p>
+                </div>
+            </article>
+
+            <article class="sun-layer">
+                <div class="sun-layer-number">06</div>
+                <div>
+                    <h3>Corona</h3>
+                    <p>
+                        The Sun's extremely hot outer atmosphere,
+                        extending far into interplanetary space.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPOSITION -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>03 / COMPOSITION</span>
+            <h2>What Is the Sun Made Of?</h2>
+        </div>
+
+        <div class="sun-overview">
+
+            <article class="sun-card">
+
+                <h3>Hydrogen and Helium</h3>
+
+                <p>
+                    The Sun consists primarily of hydrogen and helium.
+                    Under the immense pressure and temperature in its
+                    core, hydrogen nuclei combine through nuclear fusion
+                    to form helium.
+                </p>
+
+                <p>
+                    This process releases the energy that ultimately
+                    reaches Earth as sunlight. Smaller amounts of
+                    heavier elements, including oxygen, carbon, neon,
+                    and iron, are also present.
+                </p>
+
+            </article>
+
+            <article class="sun-highlight">
+
+                <h3>Why Does the Sun Shine?</h3>
+
+                <p>
+                    Deep inside the Sun, nuclear fusion releases energy.
+                    That energy gradually travels through the Sun and
+                    escapes from its surface as electromagnetic radiation.
+                </p>
+
+                <p>
+                    Sunlight supports photosynthesis, warms Earth's
+                    surface, and drives much of our planet's weather
+                    and climate system.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOLAR PHENOMENA -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>04 / SOLAR ACTIVITY</span>
+            <h2>A Star Full of Activity</h2>
+
+            <p>
+                The Sun is constantly changing. Its magnetic field
+                creates a variety of powerful and fascinating phenomena.
+            </p>
+        </div>
+
+        <div class="sun-facts-grid">
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">⚫</div>
+                <h3>Sunspots</h3>
+                <p>
+                    Darker-looking regions on the photosphere that are
+                    cooler than their surroundings because of strong
+                    magnetic fields.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">⚡</div>
+                <h3>Solar Flares</h3>
+                <p>
+                    Sudden releases of energy from the Sun that can
+                    produce intense radiation and affect conditions
+                    in near-Earth space.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🌬️</div>
+                <h3>Solar Wind</h3>
+                <p>
+                    A continuous stream of charged particles flowing
+                    outward from the Sun into the Solar System.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🔥</div>
+                <h3>Solar Prominences</h3>
+                <p>
+                    Large structures of relatively cool, dense plasma
+                    suspended in the Sun's atmosphere by magnetic fields.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🌀</div>
+                <h3>Coronal Mass Ejections</h3>
+                <p>
+                    Large eruptions of plasma and magnetic field that
+                    travel outward from the Sun.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🌈</div>
+                <h3>Solar Cycle</h3>
+                <p>
+                    The Sun's magnetic activity rises and falls over a
+                    cycle averaging about 11 years.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- IMPORTANCE TO EARTH -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>05 / OUR CONNECTION</span>
+            <h2>Why Earth Needs the Sun</h2>
+        </div>
+
+        <div class="sun-highlight">
+
+            <h3>The Source of Life's Energy</h3>
+
+            <ul>
+                <li>
+                    <strong>Light:</strong>
+                    Provides the energy plants use for photosynthesis.
+                </li>
+
+                <li>
+                    <strong>Heat:</strong>
+                    Helps maintain temperatures that allow liquid
+                    water to exist on Earth's surface.
+                </li>
+
+                <li>
+                    <strong>Weather and climate:</strong>
+                    Uneven solar heating drives atmospheric and ocean
+                    circulation.
+                </li>
+
+                <li>
+                    <strong>Space weather:</strong>
+                    Solar activity can affect satellites, radio
+                    communications, and power systems.
+                </li>
+
+                <li>
+                    <strong>Gravity:</strong>
+                    The Sun's gravitational influence keeps Earth
+                    and the other planets in orbit.
+                </li>
+            </ul>
+
+            <p>
+                Never look directly at the Sun without proper
+                solar-viewing protection. Ordinary sunglasses are
+                not safe for viewing a solar eclipse or the Sun directly.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SPACE MISSIONS -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>06 / HUMAN EXPLORATION</span>
+            <h2>Space Missions Studying the Sun</h2>
+        </div>
+
+        <div class="sun-facts-grid">
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🚀</div>
+
+                <h3>Parker Solar Probe</h3>
+
+                <p>
+                    NASA's mission designed to travel through the Sun's
+                    outer corona and investigate how the solar wind
+                    originates and accelerates.
+                </p>
+
+                <a
+                    href="https://science.nasa.gov/mission/parker-solar-probe/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Mission ↗
+                </a>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🛰️</div>
+
+                <h3>Solar Orbiter</h3>
+
+                <p>
+                    A joint ESA-NASA mission that studies the Sun,
+                    its magnetic activity, and the heliosphere while
+                    observing the solar poles from different angles.
+                </p>
+
+                <a
+                    href="https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Mission ↗
+                </a>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🇮🇳</div>
+
+                <h3>Aditya-L1</h3>
+
+                <p>
+                    India's first dedicated solar mission, developed
+                    by ISRO to study the Sun's atmosphere, solar
+                    activity, and space-weather processes.
+                </p>
+
+                <a
+                    href="https://www.isro.gov.in/Aditya_L1.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Mission ↗
+                </a>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERESTING FACTS -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>07 / DID YOU KNOW?</span>
+            <h2>Fascinating Facts About the Sun</h2>
+        </div>
+
+        <div class="sun-facts-grid">
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🌌</div>
+                <h3>One Star Among Billions</h3>
+                <p>
+                    The Sun is one of the many stars in the Milky Way galaxy.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">💡</div>
+                <h3>Light Takes Time</h3>
+                <p>
+                    Sunlight takes about 8 minutes and 20 seconds to
+                    reach Earth.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🪐</div>
+                <h3>Solar System's Centre</h3>
+                <p>
+                    The Sun contains about 99.86% of the Solar System's
+                    total mass.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🌡️</div>
+                <h3>A Hotter Outer Atmosphere</h3>
+                <p>
+                    The corona can reach millions of degrees Celsius,
+                    much hotter than the photosphere. Understanding
+                    why remains an important scientific question.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">🔄</div>
+                <h3>It Rotates</h3>
+                <p>
+                    The Sun rotates at different rates depending on
+                    latitude because it is made of plasma rather than
+                    a rigid solid.
+                </p>
+            </article>
+
+            <article class="sun-fact-card">
+                <div class="sun-fact-icon">⏳</div>
+                <h3>Billions of Years Ahead</h3>
+                <p>
+                    The Sun is approximately halfway through its
+                    main-sequence lifetime.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOOK RECOMMENDATIONS -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>08 / READING CORNER</span>
+            <h2>Books to Explore the Sun</h2>
+
+            <p>
+                Explore astronomy and solar science through these
+                books and educational reading resources.
+            </p>
+        </div>
+
+        <div class="sun-resources">
+
+            <article class="sun-card">
+
+                <h3>The Sun: A Very Short Introduction</h3>
+
+                <p>
+                    A concise introduction to the Sun, its structure,
+                    energy, and role in the Solar System.
+                </p>
+
+                <a
+                    href="https://global.oup.com/academic/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Find at Oxford University Press ↗
+                </a>
+
+            </article>
+
+            <article class="sun-card">
+
+                <h3>Astrophysics for People in a Hurry</h3>
+
+                <p>
+                    Neil deGrasse Tyson introduces major ideas in
+                    astrophysics, providing useful background for
+                    understanding stars and the universe.
+                </p>
+
+                <a
+                    href="https://wwnorton.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Find at W. W. Norton ↗
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXTERNAL RESOURCES -->
+    <section class="sun-section">
+
+        <div class="sun-section-heading">
+            <span>09 / CONTINUE LEARNING</span>
+            <h2>Explore More About the Sun</h2>
+
+            <p>
+                Continue your journey through trusted astronomy
+                resources and scientific references.
+            </p>
+        </div>
+
+        <div class="sun-resources">
+
+            <a
+                class="sun-resource"
+                href="https://science.nasa.gov/sun/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <h3>NASA — The Sun ↗</h3>
+                <p>
+                    Learn about the Sun's structure, activity, and
+                    importance to the Solar System.
+                </p>
+            </a>
+
+            <a
+                class="sun-resource"
+                href="https://solarsystem.nasa.gov/solar-system/sun/overview/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <h3>NASA Solar System Exploration ↗</h3>
+                <p>
+                    Discover scientific facts and educational material
+                    about our star.
+                </p>
+            </a>
+
+            <a
+                class="sun-resource"
+                href="https://en.wikipedia.org/wiki/Sun"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <h3>Wikipedia — Sun ↗</h3>
+                <p>
+                    Read a broad overview of the Sun's characteristics,
+                    history, and scientific study.
+                </p>
+            </a>
+
+            <a
+                class="sun-resource"
+                href="https://science.nasa.gov/heliophysics/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <h3>NASA Heliophysics ↗</h3>
+                <p>
+                    Explore the science of the Sun and its influence
+                    throughout the Solar System.
+                </p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <nav class="sun-navigation" aria-label="Planet navigation">
+
+        <a href="../explore.html">
+            ← BACK TO SPACE MAP
+        </a>
+
+        <a href="mercury.html">
+            NEXT DESTINATION: MERCURY →
+        </a>
+
+    </nav>
+
+
+    <!-- FOOTER -->
+    <footer class="sun-footer">
+
+        <span>MY UNIVERSE 2.0</span>
+
+        <span>THE SUN — OUR STAR</span>
+
+        <a href="../index.html">RETURN HOME ↑</a>
+
+    </footer>
+
+</body>
+
+</html>
+```

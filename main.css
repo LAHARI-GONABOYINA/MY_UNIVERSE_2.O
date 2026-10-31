@@ -1,0 +1,1997 @@
+
+/* =========================================
+   MY UNIVERSE 2.0
+   Complete Homepage Stylesheet
+   ========================================= */
+
+/* 1. RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background: #02030b;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 2. MAIN SPACE BACKGROUND */
+.universe {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(2, 4, 20, 0.15),
+            rgba(2, 4, 20, 0.30)
+        ),
+        url("./images/space-background.jpg")
+        center center / cover no-repeat;
+}
+
+/* 3. REALISTIC PLANETS */
+.universe::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("./images/realistic-planets.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+
+    mix-blend-mode: screen;
+    opacity: 0.95;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 4. DARK EDGE EFFECT */
+.universe::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        ellipse at center,
+        transparent 30%,
+        rgba(0, 0, 12, 0.25) 100%
+    );
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 5. NAVIGATION BAR */
+.navbar {
+    position: relative;
+    z-index: 5;
+
+    width: 100%;
+    padding: 28px 5.5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.logo-icon {
+    font-size: 27px;
+}
+
+.logo-text {
+    color: #ffffff;
+}
+
+/* ABOUT LINK */
+.about-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #ffffff;
+    font-size: 16px;
+
+    transition: color 0.3s ease;
+}
+
+.about-link:hover {
+    color: #c4a5ff;
+}
+
+.about-link span {
+    color: #a78bfa;
+    transition: transform 0.3s ease;
+}
+
+.about-link:hover span {
+    transform: translate(4px, -3px);
+}
+
+/* 6. HERO CONTENT */
+.hero {
+    position: relative;
+    z-index: 3;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 45px 20px 100px;
+}
+
+/* 7. EXPLORE / LEARN / DISCOVER */
+.eyebrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 13px;
+
+    margin-bottom: 27px;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    line-height: 1.8;
+}
+
+.eyebrow span:not(.separator) {
+    background: linear-gradient(
+        90deg,
+        #75e5ff,
+        #d2b2ff,
+        #ffb1e9
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.eyebrow .separator {
+    color: #d7a1ff;
+    text-shadow: 0 0 12px #a855f7;
+}
+
+/* 8. MAIN TITLE */
+.main-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-bottom: 25px;
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: clamp(44px, 6.3vw, 94px);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0;
+
+    background: linear-gradient(
+        100deg,
+        #ffffff 5%,
+        #a8e5ff 38%,
+        #c5a1ff 72%,
+        #ffb7ed 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(
+        0 0 18px rgba(131, 100, 255, 0.25)
+    );
+}
+
+.title-name {
+    display: inline-block;
+}
+
+.title-version {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+
+    padding: 0 12px;
+}
+
+/* 9. ORBITING STAR AROUND 2.0 */
+.orbit-star {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #70e7ff,
+        #e0a1ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(0 0 7px #a855f7);
+
+    pointer-events: none;
+
+    animation: orbit-version-star 4s linear infinite;
+}
+
+@keyframes orbit-version-star {
+    from {
+        transform:
+            rotate(0deg)
+            translateX(57px)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg)
+            translateX(57px)
+            rotate(-360deg);
+    }
+}
+
+/* 10. EIGHT PLANETS. ENDLESS WONDERS. */
+.subtitle {
+    margin-bottom: 19px;
+
+    font-size: clamp(23px, 2.8vw, 36px);
+    font-weight: 800;
+    line-height: 1.45;
+    letter-spacing: 0.3px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px rgba(117, 183, 255, 0.4),
+        0 0 28px rgba(153, 93, 255, 0.25);
+}
+
+.wonder-text {
+    background: linear-gradient(
+        90deg,
+        #77e3ff,
+        #c7a3ff,
+        #ffa5e7
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 11. DESCRIPTION */
+.description {
+    max-width: 560px;
+    margin-bottom: 40px;
+
+    color: #e3e5ff;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.9;
+
+    text-shadow: 0 0 12px rgba(100, 120, 255, 0.3);
+}
+
+/* 12. EXPLORE BUTTON */
+.get-started {
+    position: relative;
+    z-index: 5;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    min-width: 275px;
+    padding: 20px 34px;
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 60px;
+
+    background: linear-gradient(
+        110deg,
+        #168dff,
+        #7040ff,
+        #c12bee
+    );
+
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 18px rgba(55, 130, 255, 0.65),
+        0 0 35px rgba(143, 54, 255, 0.4);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+/* BUTTON HOVER GLOW */
+.get-started:hover {
+    transform: translateY(-4px) scale(1.05);
+
+    filter: brightness(1.2);
+
+    box-shadow:
+        0 0 20px rgba(80, 180, 255, 0.95),
+        0 0 45px rgba(130, 70, 255, 0.9),
+        0 0 75px rgba(210, 50, 255, 0.65);
+}
+
+/* BUTTON CLICK */
+.get-started:active {
+    transform: scale(0.97);
+}
+
+/* BUTTON ICON */
+.planet-icon {
+    font-size: 23px;
+}
+
+.arrow {
+    font-size: 25px;
+    font-weight: 400;
+
+    transition: transform 0.3s ease;
+}
+
+.get-started:hover .arrow {
+    transform: translateX(6px);
+}
+
+/* KEYBOARD FOCUS */
+.get-started:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 5px;
+}
+
+/* 13. BOTTOM TEXT */
+.scroll-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+
+    width: max-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.scroll-indicator p {
+    color: #d8c9ff;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    line-height: 1.8;
+
+    text-shadow:
+        0 0 12px rgba(140, 120, 255, 0.8);
+}
+
+/* 14. ABOUT PAGE */
+.about-page {
+    min-height: 100vh;
+    padding: 40px 7%;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            rgba(2, 4, 20, 0.55),
+            rgba(2, 4, 20, 0.8)
+        ),
+        url("./images/space-background.jpg")
+        center / cover no-repeat;
+}
+
+.about-content {
+    max-width: 850px;
+    margin: 100px auto;
+}
+
+.about-content h1 {
+    margin-bottom: 25px;
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: clamp(40px, 6vw, 72px);
+    color: #c4b5fd;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+
+    color: #e0e7ff;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+/* 15. EXPLORE PAGE */
+.explore-page {
+    min-height: 100vh;
+    padding: 35px 6%;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            rgba(2, 4, 20, 0.55),
+            rgba(2, 4, 20, 0.8)
+        ),
+        url("./images/space-background.jpg")
+        center / cover no-repeat;
+}
+
+.explore-content {
+    max-width: 1100px;
+    margin: 70px auto;
+
+    text-align: center;
+}
+
+.explore-content h1 {
+    margin-bottom: 20px;
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: clamp(40px, 6vw, 72px);
+    color: #c4b5fd;
+}
+
+.explore-content p {
+    color: #e0e7ff;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* 16. TABLET RESPONSIVENESS */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 22px 5%;
+    }
+
+    .logo {
+        gap: 8px;
+        font-size: 18px;
+    }
+
+    .logo-icon {
+        font-size: 23px;
+    }
+
+    .hero {
+        padding: 40px 20px 95px;
+    }
+
+    .eyebrow {
+        gap: 9px;
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .main-title {
+        gap: 5px;
+        letter-spacing: 0;
+    }
+
+    .subtitle {
+        font-size: 25px;
+    }
+
+    .description {
+        max-width: 450px;
+        font-size: 15px;
+    }
+
+    .get-started {
+        min-width: 240px;
+        padding: 18px 26px;
+        font-size: 16px;
+    }
+
+    .universe::before {
+        background-size: auto 100%;
+        background-position: center;
+    }
+}
+
+/* 17. MOBILE RESPONSIVENESS */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 20px 5%;
+    }
+
+    .logo {
+        gap: 6px;
+        font-size: 15px;
+    }
+
+    .logo-icon {
+        font-size: 20px;
+    }
+
+    .about-link {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 40px 18px 90px;
+    }
+
+    .eyebrow {
+        gap: 7px;
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .main-title {
+        font-size: clamp(36px, 10vw, 48px);
+        gap: 0;
+    }
+
+    .title-version {
+        padding: 0 6px;
+    }
+
+    .orbit-star {
+        font-size: 13px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 32px;
+    }
+
+    .get-started {
+        min-width: 215px;
+        gap: 12px;
+        padding: 17px 23px;
+    }
+
+    .scroll-indicator {
+        bottom: 18px;
+    }
+
+    .scroll-indicator p {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+}
+
+/* 18. REDUCED MOTION ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* FIX: Make 2.0 clearly visible */
+.hero .main-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: visible;
+}
+
+.hero .title-version {
+    position: relative;
+    display: inline-block;
+
+    /* Override inherited transparent text */
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #80dcff,
+        #d8a0ff,
+        #ffb4e8
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    color: #ffffff;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+/* Keep the orbiting star visible */
+.hero .orbit-star {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+
+    display: block;
+    opacity: 1;
+    visibility: visible;
+
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+
+    animation: orbit-version-star 4s linear infinite;
+}
+/* =========================================
+   MY UNIVERSE 2.0 — INTERACTIVE SPACE MAP
+========================================= */
+
+.space-map-page {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 50% 25%, #17143b 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 70%, #101d3c 0%, transparent 40%),
+        #050611;
+    color: #f5f5ff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+.space-map-page * {
+    box-sizing: border-box;
+}
+
+.space-map-page button,
+.space-map-page a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.map-navbar {
+    min-height: 76px;
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid rgba(174, 168, 255, 0.15);
+    background: rgba(5, 6, 17, 0.78);
+}
+
+.map-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo-symbol {
+    color: #a99aff;
+    margin-right: 8px;
+}
+
+.logo-version {
+    color: #a99aff;
+}
+
+.map-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.mission-label {
+    color: #a9a8c9;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.status-dot,
+.destination-status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: #76f5c4;
+    box-shadow: 0 0 12px #76f5c4;
+}
+
+.map-home {
+    color: #e7e4ff;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.map-home:hover {
+    color: #b6a5ff;
+}
+
+.map-main {
+    width: min(1180px, 90%);
+    margin: auto;
+}
+
+.map-intro {
+    padding: 78px 0 38px;
+    text-align: center;
+}
+
+.mission-tag {
+    display: inline-block;
+    color: #b8aaff;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+}
+
+.mission-tag span {
+    margin-right: 8px;
+}
+
+.map-intro h1 {
+    margin: 0;
+    font-size: clamp(38px, 6vw, 76px);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.map-intro h1 span {
+    color: #a99aff;
+    text-shadow: 0 0 35px rgba(144, 113, 255, 0.25);
+}
+
+.map-intro > p {
+    max-width: 550px;
+    margin: 22px auto;
+    color: #aaaac6;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.map-instructions {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 13px 19px;
+    border: 1px solid rgba(169, 154, 255, 0.23);
+    border-radius: 4px;
+    color: #c5c1e8;
+    font-size: 9px;
+    letter-spacing: 1.7px;
+    background: rgba(103, 81, 177, 0.08);
+}
+
+.instruction-icon {
+    color: #b5a5ff;
+    font-size: 16px;
+    margin-right: 9px;
+    vertical-align: -1px;
+}
+
+.interactive-map {
+    border: 1px solid rgba(166, 154, 255, 0.18);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(9, 10, 30, 0.65);
+    box-shadow: 0 25px 100px rgba(0, 0, 0, 0.24);
+}
+
+.map-top-label,
+.map-legend {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 17px 23px;
+    color: #8d8ba9;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+}
+
+.map-top-label {
+    border-bottom: 1px solid rgba(166, 154, 255, 0.12);
+}
+
+.space-map {
+    position: relative;
+    min-height: 480px;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 15% 50%, rgba(255, 163, 67, 0.08), transparent 24%),
+        radial-gradient(ellipse at 60% 45%, rgba(95, 83, 207, 0.12), transparent 35%),
+        linear-gradient(135deg, #080918, #0b1025 55%, #080918);
+}
+
+/* Subtle map grid */
+
+.space-map::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(161, 154, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(161, 154, 255, 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+/* Decorative stars */
+
+.map-star {
+    position: absolute;
+    color: #d4d0ff;
+    opacity: 0.65;
+    animation: map-twinkle 3s ease-in-out infinite alternate;
+}
+
+.star-one { top: 12%; left: 13%; }
+.star-two { top: 20%; left: 44%; animation-delay: 0.5s; }
+.star-three { top: 13%; right: 18%; animation-delay: 1s; }
+.star-four { top: 48%; left: 5%; font-size: 25px; }
+.star-five { top: 68%; left: 30%; animation-delay: 1.3s; }
+.star-six { top: 80%; left: 15%; font-size: 24px; }
+.star-seven { top: 75%; right: 12%; animation-delay: 0.8s; }
+.star-eight { top: 35%; right: 6%; font-size: 24px; }
+.star-nine { top: 89%; right: 35%; animation-delay: 1.5s; }
+.star-ten { top: 9%; left: 72%; animation-delay: 0.3s; }
+
+@keyframes map-twinkle {
+    from {
+        opacity: 0.25;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 0.95;
+        transform: scale(1.2);
+    }
+}
+
+/* Planet positions */
+
+.celestial-object {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+    padding: 8px 4px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        filter 0.3s ease;
+}
+
+.celestial-object:hover,
+.celestial-object:focus-visible,
+.celestial-object.selected {
+    border-color: rgba(173, 155, 255, 0.38);
+    background: rgba(143, 120, 255, 0.08);
+    outline: none;
+}
+
+.object-visual {
+    display: grid;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    font-size: 30px;
+    line-height: 1;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.celestial-object:hover .object-visual,
+.celestial-object.selected .object-visual {
+    transform: scale(1.18);
+}
+
+.sun-visual {
+    width: 65px;
+    height: 65px;
+    font-size: 62px;
+    color: #ffca63;
+    background: radial-gradient(circle, rgba(255, 194, 79, 0.2), transparent 70%);
+    text-shadow: 0 0 18px #ff9d38, 0 0 45px rgba(255, 138, 43, 0.8);
+}
+
+.mercury-visual {
+    color: #c0b7ae;
+    background: radial-gradient(circle at 35% 30%, #ddd3c8, #766c68 60%, #3e3943);
+    box-shadow: 0 0 15px rgba(190, 176, 166, 0.25);
+    font-size: 0;
+}
+
+.venus-visual {
+    background: radial-gradient(circle at 30% 25%, #fff0b0, #d79a55 60%, #71422f);
+    box-shadow: 0 0 16px rgba(255, 180, 102, 0.3);
+    font-size: 0;
+}
+
+.earth-visual {
+    background: radial-gradient(circle at 30% 25%, #c6f4ff, #368bd7 38%, #176048 60%, #10274c);
+    box-shadow: 0 0 20px rgba(68, 159, 255, 0.4);
+    font-size: 0;
+}
+
+.mars-visual {
+    background: radial-gradient(circle at 30% 25%, #ffc19b, #d45c37 55%, #713323);
+    box-shadow: 0 0 15px rgba(240, 102, 62, 0.3);
+    font-size: 0;
+}
+
+.jupiter-visual {
+    width: 57px;
+    height: 57px;
+    background: repeating-linear-gradient(
+        0deg,
+        #c49a7b 0 5px,
+        #f0d3b1 5px 10px,
+        #98674e 10px 13px
+    );
+    box-shadow: 0 0 18px rgba(215, 171, 132, 0.2);
+    font-size: 0;
+}
+
+.saturn-visual {
+    width: 60px;
+    height: 43px;
+    color: #e7c990;
+    font-size: 45px;
+    text-shadow: 0 0 14px rgba(255, 217, 154, 0.4);
+}
+
+.uranus-visual {
+    background: radial-gradient(circle at 30% 25%, #d4ffff, #82d9df 60%, #397e9b);
+    box-shadow: 0 0 18px rgba(118, 219, 232, 0.25);
+    font-size: 0;
+}
+
+.neptune-visual {
+    background: radial-gradient(circle at 30% 25%, #9cbfff, #3563d7 55%, #1c285f);
+    box-shadow: 0 0 18px rgba(76, 120, 255, 0.3);
+    font-size: 0;
+}
+
+/* Planet map coordinates */
+
+.sun-object     { left: 12%; top: 50%; }
+.mercury-object { left: 25%; top: 30%; }
+.venus-object   { left: 38%; top: 67%; }
+.earth-object   { left: 48%; top: 34%; }
+.mars-object    { left: 58%; top: 68%; }
+.jupiter-object { left: 70%; top: 34%; }
+.saturn-object  { left: 81%; top: 63%; }
+.uranus-object  { left: 64%; top: 83%; }
+.neptune-object { left: 88%; top: 24%; }
+
+.object-name {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.object-category {
+    color: #8786a9;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.celestial-object.selected .object-name {
+    color: #b9a9ff;
+}
+
+.map-bottom-note {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    color: #646683;
+    font-size: 8px;
+    letter-spacing: 1.6px;
+}
+
+.map-legend {
+    border-top: 1px solid rgba(166, 154, 255, 0.12);
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #a99aff;
+    box-shadow: 0 0 10px #a99aff;
+}
+
+/* Destination information panel */
+
+.destination-panel {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    margin-top: 32px;
+    padding: 38px;
+    border: 1px solid rgba(166, 154, 255, 0.18);
+    border-radius: 12px;
+    background:
+        radial-gradient(ellipse at 85% 50%, rgba(116, 93, 221, 0.12), transparent 50%),
+        rgba(12, 13, 34, 0.85);
+}
+
+.destination-eyebrow {
+    color: #aaa4d2;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.destination-number {
+    margin: 32px 0 10px;
+    color: #a99aff;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.destination-left h2 {
+    margin: 0;
+    font-size: clamp(30px, 4vw, 48px);
+    letter-spacing: 1px;
+}
+
+.destination-description {
+    max-width: 520px;
+    color: #aaaac6;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.destination-fact {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    max-width: 500px;
+    margin-top: 25px;
+    padding: 17px;
+    border: 1px solid rgba(166, 154, 255, 0.15);
+    border-radius: 7px;
+    background: rgba(132, 111, 230, 0.06);
+}
+
+.fact-icon {
+    color: #b7a5ff;
+    font-size: 20px;
+}
+
+.fact-label {
+    color: #aaa4d2;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.destination-fact p {
+    margin: 8px 0 0;
+    color: #ddd9f5;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.destination-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.destination-coordinate {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    color: #8988aa;
+    font-size: 8px;
+    letter-spacing: 1.3px;
+}
+
+.destination-symbol {
+    display: grid;
+    place-items: center;
+    width: 170px;
+    height: 170px;
+    margin: 20px 0;
+    border: 1px solid rgba(174, 157, 255, 0.16);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(138, 117, 255, 0.13), transparent 70%);
+    color: #b9a5ff;
+    font-size: 85px;
+    text-shadow: 0 0 40px rgba(166, 138, 255, 0.6);
+    animation: destination-float 4s ease-in-out infinite;
+}
+
+@keyframes destination-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+.destination-caption {
+    color: #aaa4d2;
+    font-size: 9px;
+    letter-spacing: 1.7px;
+    text-align: center;
+}
+
+.next-destination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 17px;
+    border: 1px solid rgba(169, 154, 255, 0.45);
+    border-radius: 5px;
+    background: rgba(133, 108, 255, 0.1);
+    color: #e8e3ff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.next-destination:hover {
+    background: rgba(133, 108, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+.next-destination span {
+    font-size: 19px;
+}
+
+/* Closing section */
+
+.mission-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 65px 0;
+}
+
+.footer-small-label {
+    color: #a99aff;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.mission-footer h2 {
+    margin: 10px 0 0;
+    font-size: clamp(20px, 3vw, 30px);
+}
+
+.mission-footer > p {
+    max-width: 280px;
+    color: #9695b2;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.map-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 25px 6%;
+    border-top: 1px solid rgba(174, 168, 255, 0.15);
+    color: #777692;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.map-footer a {
+    color: #b9aaff;
+    text-decoration: none;
+}
+
+.map-footer a:hover {
+    color: #fff;
+}
+
+/* Responsive layout */
+
+@media (max-width: 760px) {
+    .map-navbar {
+        padding: 17px 5%;
+    }
+
+    .map-logo {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .map-nav-right {
+        gap: 14px;
+    }
+
+    .mission-label {
+        font-size: 8px;
+        letter-spacing: 0.7px;
+    }
+
+    .map-home {
+        font-size: 9px;
+    }
+
+    .map-main {
+        width: 92%;
+    }
+
+    .map-intro {
+        padding-top: 55px;
+    }
+
+    .map-intro h1 {
+        letter-spacing: -1px;
+    }
+
+    .space-map {
+        min-height: 600px;
+    }
+
+    .sun-object     { left: 13%; top: 50%; }
+    .mercury-object { left: 35%; top: 23%; }
+    .venus-object   { left: 66%; top: 18%; }
+    .earth-object   { left: 48%; top: 38%; }
+    .mars-object    { left: 80%; top: 38%; }
+    .jupiter-object { left: 25%; top: 64%; }
+    .saturn-object  { left: 65%; top: 62%; }
+    .uranus-object  { left: 35%; top: 84%; }
+    .neptune-object { left: 80%; top: 82%; }
+
+    .destination-panel {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 35px;
+    }
+
+    .destination-right {
+        padding-top: 20px;
+        border-top: 1px solid rgba(166, 154, 255, 0.15);
+    }
+
+    .mission-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        margin: 45px 0;
+    }
+
+    .map-footer {
+        flex-wrap: wrap;
+        padding: 22px 5%;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 420px) {
+    .mission-label {
+        display: none;
+    }
+
+    .map-intro h1 {
+        font-size: 38px;
+    }
+
+    .map-instructions {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .map-top-label,
+    .map-legend {
+        padding: 14px;
+        font-size: 7px;
+        letter-spacing: 0.8px;
+    }
+
+    .object-name {
+        font-size: 8px;
+        letter-spacing: 0.7px;
+    }
+
+    .object-category {
+        font-size: 7px;
+    }
+
+    .object-visual {
+        width: 31px;
+        height: 31px;
+    }
+
+    .sun-visual {
+        width: 48px;
+        height: 48px;
+        font-size: 45px;
+    }
+
+    .jupiter-visual {
+        width: 43px;
+        height: 43px;
+    }
+
+    .saturn-visual {
+        width: 45px;
+        height: 35px;
+        font-size: 36px;
+    }
+
+    .destination-panel {
+        padding: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .space-map-page *,
+    .space-map-page *::before,
+    .space-map-page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+/* ==========================================
+   MY UNIVERSE 2.0
+   COLOURFUL COSMIC THEME
+========================================== */
+
+/* COLOURFUL SPACE BACKGROUND */
+
+.space-map-page {
+    background:
+        radial-gradient(
+            ellipse at 10% 15%,
+            rgba(135, 55, 255, 0.24),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 90% 25%,
+            rgba(0, 195, 255, 0.18),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 50% 65%,
+            rgba(255, 40, 180, 0.13),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 15% 90%,
+            rgba(0, 255, 200, 0.10),
+            transparent 30%
+        ),
+        #050511;
+}
+
+/* NAVIGATION */
+
+.map-navbar {
+    background: rgba(8, 6, 25, 0.88);
+    border-bottom: 1px solid rgba(177, 124, 255, 0.35);
+    box-shadow: 0 5px 30px rgba(103, 60, 255, 0.12);
+}
+
+.map-logo {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #c7a5ff,
+        #70e8ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-symbol {
+    color: #ff83e8;
+    text-shadow: 0 0 15px #ff4fdf;
+}
+
+.logo-version {
+    -webkit-text-fill-color: #70e8ff;
+}
+
+.map-home {
+    padding: 10px 17px;
+    border: 1px solid rgba(137, 111, 255, 0.55);
+    border-radius: 25px;
+    background: rgba(126, 78, 255, 0.10);
+}
+
+.map-home:hover {
+    color: #ffffff;
+    background: linear-gradient(
+        110deg,
+        #763bff,
+        #d83cff
+    );
+
+    box-shadow: 0 0 22px rgba(181, 76, 255, 0.5);
+}
+
+/* MISSION LABEL */
+
+.mission-tag {
+    color: #ff9ce8;
+    text-shadow: 0 0 15px rgba(255, 80, 210, 0.4);
+}
+
+.status-dot {
+    background: #40ffbd;
+    box-shadow: 0 0 15px #40ffbd;
+}
+
+/* MAIN HEADING */
+
+.map-intro h1 {
+    background: linear-gradient(
+        110deg,
+        #ffffff 5%,
+        #b99aff 30%,
+        #ff91e8 55%,
+        #7beaff 80%,
+        #ffffff 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(
+        0 0 24px rgba(159, 103, 255, 0.23)
+    );
+}
+
+.map-intro h1 span {
+    background: linear-gradient(
+        90deg,
+        #a58aff,
+        #ff8ae9,
+        #70eaff,
+        #8bffcb
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(
+        0 0 18px rgba(173, 94, 255, 0.4)
+    );
+}
+
+.map-intro > p {
+    color: #c1c3e9;
+}
+
+.map-instructions {
+    border-color: rgba(193, 129, 255, 0.45);
+
+    background: linear-gradient(
+        100deg,
+        rgba(119, 64, 255, 0.12),
+        rgba(255, 60, 210, 0.08),
+        rgba(0, 213, 255, 0.10)
+    );
+
+    box-shadow: 0 0 25px rgba(124, 79, 255, 0.09);
+}
+
+.instruction-icon {
+    color: #ff92e7;
+}
+
+/* MAP CONTAINER */
+
+.interactive-map {
+    border-color: rgba(159, 125, 255, 0.4);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(40, 20, 75, 0.35),
+            rgba(10, 24, 62, 0.35),
+            rgba(47, 12, 57, 0.25)
+        );
+
+    box-shadow:
+        0 0 35px rgba(111, 64, 255, 0.12),
+        0 25px 90px rgba(0, 0, 0, 0.3);
+}
+
+.map-top-label {
+    border-bottom-color: rgba(160, 132, 255, 0.25);
+    color: #b8a9ed;
+}
+
+.space-map {
+    background:
+        radial-gradient(
+            circle at 12% 48%,
+            rgba(255, 153, 40, 0.19),
+            transparent 19%
+        ),
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(117, 63, 255, 0.20),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 72% 60%,
+            rgba(0, 199, 255, 0.15),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 48% 85%,
+            rgba(255, 44, 195, 0.12),
+            transparent 24%
+        ),
+        linear-gradient(
+            135deg,
+            #09071c,
+            #111033 45%,
+            #0b1632 75%,
+            #160b28
+        );
+}
+
+/* BRIGHTER STARS */
+
+.map-star {
+    color: #ffffff;
+    text-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #b59aff;
+}
+
+.star-one,
+.star-seven {
+    color: #ff9be9;
+    text-shadow: 0 0 15px #ff42d6;
+}
+
+.star-two,
+.star-five {
+    color: #76edff;
+    text-shadow: 0 0 15px #35dfff;
+}
+
+.star-three,
+.star-nine {
+    color: #ffe6a0;
+    text-shadow: 0 0 15px #ffc65a;
+}
+
+/* PLANET SELECTION */
+
+.celestial-object {
+    border-color: transparent;
+}
+
+.celestial-object:hover,
+.celestial-object:focus-visible,
+.celestial-object.selected {
+    border-color: rgba(206, 166, 255, 0.7);
+
+    background: linear-gradient(
+        145deg,
+        rgba(134, 81, 255, 0.20),
+        rgba(255, 70, 211, 0.10),
+        rgba(42, 203, 255, 0.10)
+    );
+
+    box-shadow:
+        0 0 24px rgba(146, 85, 255, 0.20),
+        inset 0 0 15px rgba(151, 108, 255, 0.08);
+}
+
+.object-name {
+    color: #f4eeff;
+    text-shadow: 0 0 10px rgba(187, 166, 255, 0.18);
+}
+
+.object-category {
+    color: #a7a8d3;
+}
+
+.celestial-object.selected .object-name {
+    color: #ffb0ef;
+    text-shadow: 0 0 13px rgba(255, 105, 221, 0.5);
+}
+
+/* PLANET COLOURS */
+
+.sun-visual {
+    color: #ffe58a;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 239, 130, 0.35),
+        rgba(255, 132, 35, 0.10) 60%,
+        transparent 75%
+    );
+
+    text-shadow:
+        0 0 12px #ffdc65,
+        0 0 30px #ff922e,
+        0 0 55px #ff5c24;
+}
+
+.mercury-visual {
+    background: radial-gradient(
+        circle at 30% 25%,
+        #f2e7db,
+        #a6a2b6 45%,
+        #635c7a
+    );
+
+    box-shadow:
+        0 0 18px rgba(205, 193, 255, 0.45);
+}
+
+.venus-visual {
+    background: radial-gradient(
+        circle at 30% 25%,
+        #fff3b3,
+        #ffbf69 45%,
+        #c95c43
+    );
+
+    box-shadow:
+        0 0 20px rgba(255, 165, 75, 0.45);
+}
+
+.earth-visual {
+    background: radial-gradient(
+        circle at 30% 25%,
+        #a7f7ff,
+        #419cff 30%,
+        #28c78c 55%,
+        #124c92
+    );
+
+    box-shadow:
+        0 0 25px rgba(62, 171, 255, 0.65);
+}
+
+.mars-visual {
+    background: radial-gradient(
+        circle at 30% 25%,
+        #ffd1a6,
+        #ff785e 45%,
+        #a52e45
+    );
+
+    box-shadow:
+        0 0 22px rgba(255, 90, 92, 0.5);
+}
+
+.jupiter-visual {
+    background: repeating-linear-gradient(
+        0deg,
+        #e9a66e 0 5px,
+        #ffe0ad 5px 10px,
+        #b96765 10px 13px,
+        #f4c5a3 13px 17px
+    );
+
+    box-shadow:
+        0 0 25px rgba(255, 180, 125, 0.4);
+}
+
+.saturn-visual {
+    color: #ffe0a0;
+
+    text-shadow:
+        0 0 10px #ffdb91,
+        0 0 25px rgba(255, 170, 88, 0.7);
+}
+
+.uranus-visual {
+    background: radial-gradient(
+        circle at 30% 25%,
+        #d4ffff,
+        #7af3e7 45%,
+        #429bc9
+    );
+
+    box-shadow:
+        0 0 23px rgba(99, 255, 235, 0.45);
+}
+
+.neptune-visual {
+    background: radial-gradient(
+        circle at 30% 25%,
+        #b8d6ff,
+        #547dff 45%,
+        #392eae
+    );
+
+    box-shadow:
+        0 0 25px rgba(93, 112, 255, 0.55);
+}
+
+/* MAP LABELS */
+
+.map-legend {
+    border-top-color: rgba(160, 132, 255, 0.25);
+    color: #b6b3df;
+}
+
+.legend-dot {
+    background: #ff82e8;
+    box-shadow: 0 0 12px #ff53db;
+}
+
+.map-bottom-note {
+    color: #a09bc9;
+}
+
+/* DESTINATION INFORMATION PANEL */
+
+.destination-panel {
+    border-color: rgba(169, 133, 255, 0.35);
+
+    background:
+        radial-gradient(
+            ellipse at 10% 20%,
+            rgba(137, 73, 255, 0.16),
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 90% 80%,
+            rgba(255, 57, 198, 0.10),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(19, 15, 49, 0.96),
+            rgba(10, 21, 48, 0.96)
+        );
+
+    box-shadow:
+        0 0 40px rgba(117, 72, 255, 0.10);
+}
+
+.destination-eyebrow {
+    color: #bdaeff;
+}
+
+.destination-number {
+    color: #ff9de9;
+    text-shadow: 0 0 15px rgba(255, 89, 213, 0.3);
+}
+
+.destination-left h2 {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #c9a9ff,
+        #77eaff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.destination-description {
+    color: #c3c5e8;
+}
+
+.destination-fact {
+    border-color: rgba(166, 136, 255, 0.32);
+
+    background: linear-gradient(
+        110deg,
+        rgba(123, 72, 255, 0.13),
+        rgba(255, 65, 206, 0.06),
+        rgba(0, 200, 255, 0.07)
+    );
+}
+
+.fact-icon {
+    color: #ff94e7;
+    text-shadow: 0 0 12px #ff5cda;
+}
+
+.fact-label {
+    color: #c2aaff;
+}
+
+.destination-fact p {
+    color: #e9e5ff;
+}
+
+.destination-coordinate {
+    color: #aaa8d6;
+}
+
+.destination-symbol {
+    border-color: rgba(186, 146, 255, 0.4);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 91, 220, 0.13),
+            rgba(130, 75, 255, 0.12) 45%,
+            transparent 72%
+        );
+
+    color: #f1d6ff;
+
+    text-shadow:
+        0 0 15px #b88cff,
+        0 0 35px rgba(156, 93, 255, 0.65);
+}
+
+.destination-caption {
+    color: #c5b4ff;
+}
+
+/* COLOURFUL BUTTON */
+
+.next-destination {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(211, 159, 255, 0.65);
+
+    background: linear-gradient(
+        105deg,
+        rgba(120, 65, 255, 0.30),
+        rgba(255, 60, 209, 0.18),
+        rgba(0, 201, 255, 0.18)
+    );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 20px rgba(138, 84, 255, 0.12);
+}
+
+.next-destination:hover {
+    border-color: #ff9be9;
+
+    background: linear-gradient(
+        105deg,
+        #7542ed,
+        #c43ce8,
+        #328be8
+    );
+
+    box-shadow:
+        0 0 25px rgba(187, 84, 255, 0.45),
+        0 0 45px rgba(80, 142, 255, 0.18);
+}
+
+.next-destination span {
+    color: #bdf6ff;
+}
+
+/* CLOSING SECTION */
+
+.footer-small-label {
+    color: #ff99e7;
+}
+
+.mission-footer h2 {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #c9a4ff,
+        #77eaff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mission-footer > p {
+    color: #b5b5db;
+}
+
+/* FOOTER */
+
+.map-footer {
+    border-top-color: rgba(177, 124, 255, 0.3);
+    background: rgba(7, 6, 22, 0.7);
+    color: #a4a1c9;
+}
+
+.map-footer a {
+    color: #ff9ce9;
+}
+
+.map-footer a:hover {
+    color: #83efff;
+    text-shadow: 0 0 12px rgba(83, 222, 255, 0.5);
+}

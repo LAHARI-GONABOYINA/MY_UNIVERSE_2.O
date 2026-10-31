@@ -1,0 +1,1217 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars | MY UNIVERSE 2.0</title>
+    <link rel="stylesheet" href="../main.css">
+
+    <style>
+        :root {
+            --mars-red: #ff6347;
+            --mars-orange: #ff9b54;
+            --mars-light: #ffd0b5;
+            --space-dark: #050816;
+            --space-card: rgba(17, 25, 48, 0.82);
+            --space-border: rgba(255, 99, 71, 0.24);
+            --text-main: #f5f7ff;
+            --text-muted: #aab5ce;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(255, 99, 71, 0.10), transparent 30%),
+                radial-gradient(circle at 85% 40%, rgba(255, 155, 84, 0.07), transparent 28%),
+                var(--space-dark);
+            color: var(--text-main);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .mars-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 22px 8%;
+            border-bottom: 1px solid var(--space-border);
+            background: rgba(5, 8, 22, 0.88);
+        }
+
+        .mars-logo {
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .mars-logo span {
+            color: var(--mars-red);
+        }
+
+        .mars-home {
+            color: var(--mars-light);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .mars-home:hover {
+            color: var(--mars-orange);
+        }
+
+        .mars-hero {
+            min-height: 590px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            padding: 75px 8%;
+            overflow: hidden;
+        }
+
+        .mars-hero-content {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .mars-eyebrow {
+            color: var(--mars-red);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .mars-hero h1 {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        .mars-hero h1 span {
+            color: var(--mars-red);
+            display: block;
+        }
+
+        .mars-hero p {
+            max-width: 580px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .mars-button {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--mars-red), var(--mars-orange));
+            color: #260b07;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mars-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(255, 99, 71, 0.22);
+        }
+
+        .mars-visual {
+            flex: 0 0 330px;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 30% 25%,
+                    #ffcc9e 0%,
+                    #e98553 20%,
+                    #c34c32 48%,
+                    #8d3027 75%,
+                    #421b20 100%);
+            box-shadow:
+                inset -35px -25px 65px rgba(0, 0, 0, 0.55),
+                inset 12px 8px 35px rgba(255, 205, 155, 0.30),
+                0 0 45px rgba(255, 99, 71, 0.20);
+            animation: mars-float 6s ease-in-out infinite;
+        }
+
+        .mars-visual::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background:
+                radial-gradient(ellipse at 32% 28%,
+                    rgba(255, 220, 170, 0.9) 0 7%,
+                    transparent 8%),
+                radial-gradient(ellipse at 62% 43%,
+                    rgba(94, 31, 28, 0.65) 0 12%,
+                    transparent 13%),
+                radial-gradient(ellipse at 40% 68%,
+                    rgba(96, 35, 27, 0.55) 0 10%,
+                    transparent 11%),
+                repeating-linear-gradient(
+                    165deg,
+                    transparent 0 17px,
+                    rgba(80, 29, 24, 0.16) 18px 22px,
+                    transparent 23px 38px
+                );
+            transform: rotate(-12deg);
+        }
+
+        .mars-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(
+                115deg,
+                transparent 38%,
+                rgba(0, 0, 0, 0.55) 100%
+            );
+        }
+
+        @keyframes mars-float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-14px) rotate(3deg);
+            }
+        }
+
+        .mars-section {
+            padding: 65px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mars-section-heading {
+            margin-bottom: 35px;
+            max-width: 800px;
+        }
+
+        .mars-section-heading .mars-eyebrow {
+            margin-bottom: 8px;
+        }
+
+        .mars-section-heading h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .mars-section-heading p {
+            color: var(--text-muted);
+        }
+
+        .mars-overview {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .mars-card {
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid var(--space-border);
+            background: var(--space-card);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mars-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 99, 71, 0.6);
+        }
+
+        .mars-card h3 {
+            color: var(--mars-light);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .mars-card p {
+            color: var(--text-muted);
+        }
+
+        .mars-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .mars-stat {
+            padding: 22px 18px;
+            border-radius: 15px;
+            border: 1px solid var(--space-border);
+            background: rgba(255, 99, 71, 0.04);
+        }
+
+        .mars-stat strong {
+            display: block;
+            color: var(--mars-red);
+            font-size: 1.45rem;
+            margin-bottom: 5px;
+        }
+
+        .mars-stat span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .mars-layers {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .mars-layer {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .mars-layer-number {
+            flex: 0 0 45px;
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #260b07;
+            background: linear-gradient(135deg, var(--mars-red), var(--mars-orange));
+            font-weight: 800;
+        }
+
+        .mars-layer h3 {
+            color: var(--mars-light);
+            margin-bottom: 6px;
+        }
+
+        .mars-layer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .mars-highlight {
+            margin-top: 25px;
+            padding: 22px 25px;
+            border-left: 4px solid var(--mars-red);
+            border-radius: 0 12px 12px 0;
+            background: rgba(255, 99, 71, 0.07);
+            color: var(--text-muted);
+        }
+
+        .mars-highlight strong {
+            color: var(--mars-light);
+        }
+
+        .mars-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .mars-fact-card {
+            padding: 25px;
+            border-radius: 17px;
+            border: 1px solid var(--space-border);
+            background: var(--space-card);
+            transition: transform 0.3s ease;
+        }
+
+        .mars-fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mars-fact-icon {
+            font-size: 2rem;
+            margin-bottom: 13px;
+        }
+
+        .mars-fact-card h3 {
+            color: var(--mars-light);
+            margin-bottom: 10px;
+        }
+
+        .mars-fact-card p {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+        }
+
+        .mars-resources {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .mars-resource {
+            display: block;
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid var(--space-border);
+            background: rgba(17, 25, 48, 0.65);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .mars-resource:hover {
+            background: rgba(255, 99, 71, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .mars-resource h3 {
+            color: var(--mars-light);
+            margin-bottom: 7px;
+        }
+
+        .mars-resource p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .mars-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .mars-navigation a {
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--space-border);
+            color: var(--mars-light);
+            transition: background 0.3s ease;
+        }
+
+        .mars-navigation a:hover {
+            background: rgba(255, 99, 71, 0.1);
+        }
+
+        .mars-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 28px 8%;
+            border-top: 1px solid var(--space-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .mars-footer strong {
+            color: var(--mars-red);
+        }
+
+        @media (max-width: 800px) {
+            .mars-hero {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                padding-top: 45px;
+            }
+
+            .mars-visual {
+                align-self: center;
+                width: 260px;
+                height: 260px;
+                flex-basis: 260px;
+            }
+
+            .mars-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .mars-facts-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 550px) {
+            .mars-navbar {
+                padding: 18px 5%;
+                flex-wrap: wrap;
+            }
+
+            .mars-logo {
+                font-size: 0.95rem;
+            }
+
+            .mars-hero,
+            .mars-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .mars-hero h1 {
+                font-size: 3.4rem;
+            }
+
+            .mars-visual {
+                width: 220px;
+                height: 220px;
+                flex-basis: 220px;
+            }
+
+            .mars-facts-grid,
+            .mars-layers,
+            .mars-resources {
+                grid-template-columns: 1fr;
+            }
+
+            .mars-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .mars-stat {
+                padding: 16px 12px;
+            }
+
+            .mars-stat strong {
+                font-size: 1.2rem;
+            }
+
+            .mars-navigation {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .mars-navigation a {
+                text-align: center;
+            }
+
+            .mars-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .mars-visual {
+                animation: none;
+            }
+
+            .mars-card,
+            .mars-button,
+            .mars-resource,
+            .mars-fact-card {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="mars-navbar">
+        <a href="../index.html" class="mars-logo">
+            ✦ MY UNIVERSE <span>2.0</span>
+        </a>
+
+        <a href="../explore.html" class="mars-home">
+            ← SPACE MAP
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="mars-hero">
+            <div class="mars-hero-content">
+                <div class="mars-eyebrow">SOLAR SYSTEM / PLANET 04</div>
+
+                <h1>
+                    PLANET
+                    <span>MARS</span>
+                </h1>
+
+                <p>
+                    Welcome to Mars, the fourth planet from the Sun.
+                    Known as the Red Planet, Mars has a dusty landscape,
+                    enormous volcanoes, deep canyons, polar ice caps,
+                    and evidence that liquid water once flowed across
+                    parts of its surface. Discover a world that may
+                    hold clues to the history of life beyond Earth.
+                </p>
+
+                <a href="#mars-overview" class="mars-button">
+                    BEGIN EXPLORATION ↓
+                </a>
+            </div>
+
+            <div
+                class="mars-visual"
+                role="img"
+                aria-label="Stylized red-orange illustration of planet Mars">
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="mars-section" id="mars-overview">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">01 / PLANET PROFILE</div>
+                <h2>Meet Mars</h2>
+                <p>
+                    Mars is a cold, rocky world with a thin atmosphere
+                    and surface features that preserve evidence of
+                    a very different past.
+                </p>
+            </div>
+
+            <div class="mars-overview">
+                <article class="mars-card">
+                    <h3>The Red Planet</h3>
+
+                    <p>
+                        Mars gets its reddish appearance from iron-rich
+                        minerals in its dust and rocks. It has mountains,
+                        valleys, impact craters, and ancient river-like
+                        channels that scientists study to understand
+                        its geological history.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Today, Mars is cold and dry at the surface.
+                        Water exists mainly as ice, and its thin
+                        atmosphere cannot retain heat as effectively
+                        as Earth's atmosphere.
+                    </p>
+                </article>
+
+                <div class="mars-stats">
+                    <div class="mars-stat">
+                        <strong>4.5B</strong>
+                        <span>Approximate age in years</span>
+                    </div>
+
+                    <div class="mars-stat">
+                        <strong>6,779 km</strong>
+                        <span>Average diameter</span>
+                    </div>
+
+                    <div class="mars-stat">
+                        <strong>687 days</strong>
+                        <span>One orbit around the Sun</span>
+                    </div>
+
+                    <div class="mars-stat">
+                        <strong>2</strong>
+                        <span>Natural moons: Phobos and Deimos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internal Structure -->
+        <section class="mars-section" id="mars-structure">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">02 / INSIDE THE PLANET</div>
+                <h2>The Internal Structure of Mars</h2>
+                <p>
+                    Like Earth, Mars has a crust, mantle, and core.
+                    Scientists use spacecraft measurements to
+                    investigate its interior.
+                </p>
+            </div>
+
+            <div class="mars-layers">
+                <article class="mars-card mars-layer">
+                    <div class="mars-layer-number">01</div>
+
+                    <div>
+                        <h3>Core</h3>
+                        <p>
+                            Mars has a metallic core containing iron
+                            and other elements. NASA's InSight mission
+                            helped scientists investigate the planet's
+                            interior structure.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mars-card mars-layer">
+                    <div class="mars-layer-number">02</div>
+
+                    <div>
+                        <h3>Mantle</h3>
+                        <p>
+                            The mantle lies beneath the crust and
+                            consists of rocky material. Its thermal
+                            and geological history helps scientists
+                            understand how Mars evolved.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mars-card mars-layer">
+                    <div class="mars-layer-number">03</div>
+
+                    <div>
+                        <h3>Crust</h3>
+                        <p>
+                            Mars's crust contains ancient rocks,
+                            volcanic plains, impact craters, and
+                            geological formations shaped over
+                            billions of years.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mars-card mars-layer">
+                    <div class="mars-layer-number">04</div>
+
+                    <div>
+                        <h3>Surface Dust</h3>
+                        <p>
+                            Fine, iron-rich dust covers large areas
+                            of Mars. Winds move this dust around
+                            and can produce dust storms that
+                            sometimes spread across the planet.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="mars-highlight">
+                <strong>Scientific discovery:</strong>
+                NASA's InSight lander used seismic measurements
+                to study marsquakes and learn more about the
+                planet's internal structure.
+            </div>
+        </section>
+
+        <!-- Composition -->
+        <section class="mars-section" id="mars-composition">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">03 / WHAT IS MARS MADE OF?</div>
+                <h2>Composition of Mars</h2>
+                <p>
+                    Mars contains rocky material, iron-rich dust,
+                    polar ice, and a thin atmosphere.
+                </p>
+            </div>
+
+            <div class="mars-facts-grid">
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🪨</div>
+                    <h3>Rocky Surface</h3>
+                    <p>
+                        Mars has rocky terrain, mountains, plains,
+                        impact craters, and large volcanic structures.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🔴</div>
+                    <h3>Iron-Rich Dust</h3>
+                    <p>
+                        Oxidized iron minerals in Martian dust
+                        contribute to the planet's familiar
+                        red-orange color.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">❄️</div>
+                    <h3>Water Ice</h3>
+                    <p>
+                        Water ice exists in polar deposits and
+                        beneath parts of the surface. Scientists
+                        also study evidence of ancient liquid water.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Atmosphere and Surface -->
+        <section class="mars-section" id="mars-atmosphere">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">04 / A COLD DESERT WORLD</div>
+                <h2>Atmosphere and Surface</h2>
+                <p>
+                    Mars has a thin atmosphere and a landscape
+                    shaped by impacts, wind, and ancient water.
+                </p>
+            </div>
+
+            <div class="mars-facts-grid">
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🌬️</div>
+                    <h3>Thin Atmosphere</h3>
+                    <p>
+                        Mars's atmosphere consists mainly of
+                        carbon dioxide. Its low pressure provides
+                        little protection against the harsh
+                        surface environment.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🌋</div>
+                    <h3>Olympus Mons</h3>
+                    <p>
+                        Olympus Mons is a gigantic shield volcano
+                        and one of the largest known volcanoes
+                        in the solar system.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🏜️</div>
+                    <h3>Valles Marineris</h3>
+                    <p>
+                        Valles Marineris is an immense canyon
+                        system stretching across a large part
+                        of the Martian surface.
+                    </p>
+                </article>
+            </div>
+
+            <div class="mars-highlight">
+                <strong>Did you know?</strong>
+                Mars has seasons because its axis is tilted,
+                much like Earth's. However, its year is longer,
+                so its seasons last longer too.
+            </div>
+        </section>
+
+        <!-- Rotation and Orbit -->
+        <section class="mars-section" id="mars-orbit">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">05 / COSMIC MOVEMENT</div>
+                <h2>Rotation and Orbit</h2>
+                <p>
+                    Mars has a day length similar to Earth's,
+                    but its journey around the Sun takes much longer.
+                </p>
+            </div>
+
+            <div class="mars-layers">
+                <article class="mars-card">
+                    <h3>A Martian Day</h3>
+
+                    <p>
+                        Mars rotates once in approximately
+                        24 hours and 37 minutes. Scientists
+                        often call a Martian solar day a
+                        "sol."
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>A Martian Year</h3>
+
+                    <p>
+                        Mars takes approximately 687 Earth days
+                        to complete one orbit around the Sun.
+                        This makes its year nearly twice as
+                        long as an Earth year.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Seasons on Mars</h3>
+
+                    <p>
+                        Mars has spring, summer, autumn, and
+                        winter. Its axial tilt produces seasonal
+                        changes in temperature, polar ice, and
+                        atmospheric activity.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Dust Storms</h3>
+
+                    <p>
+                        Winds can lift dust into the atmosphere.
+                        Some storms grow large enough to affect
+                        much of the planet and reduce sunlight
+                        reaching the surface.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Moons -->
+        <section class="mars-section" id="mars-moons">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">06 / MARTIAN MOONS</div>
+                <h2>Phobos and Deimos</h2>
+                <p>
+                    Mars has two small natural moons that
+                    orbit close to the planet.
+                </p>
+            </div>
+
+            <div class="mars-layers">
+                <article class="mars-card">
+                    <h3>Phobos</h3>
+
+                    <p>
+                        Phobos is the larger and closer of Mars's
+                        two moons. It orbits Mars very quickly
+                        and is gradually moving closer to the
+                        planet over time.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Deimos</h3>
+
+                    <p>
+                        Deimos is the smaller and more distant
+                        moon. It has an irregular shape and
+                        moves around Mars more slowly than
+                        Phobos does.
+                    </p>
+                </article>
+            </div>
+
+            <div class="mars-highlight">
+                <strong>Moon mystery:</strong>
+                Scientists continue to investigate how Phobos
+                and Deimos formed and whether they are captured
+                asteroids or the products of another process.
+            </div>
+        </section>
+
+        <!-- Importance -->
+        <section class="mars-section" id="mars-importance">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">07 / WHY MARS MATTERS</div>
+                <h2>Scientific Importance of Mars</h2>
+                <p>
+                    Mars helps scientists investigate planetary
+                    evolution, ancient environments, and the
+                    possibility of life beyond Earth.
+                </p>
+            </div>
+
+            <div class="mars-facts-grid">
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">💧</div>
+                    <h3>Searching for Ancient Water</h3>
+                    <p>
+                        River channels, minerals, and sedimentary
+                        rocks provide evidence that liquid water
+                        existed on ancient Mars.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🧬</div>
+                    <h3>Searching for Signs of Life</h3>
+                    <p>
+                        Robotic missions investigate whether
+                        ancient Martian environments could have
+                        supported microbial life. Life has not
+                        yet been confirmed on Mars.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🚀</div>
+                    <h3>Future Human Exploration</h3>
+                    <p>
+                        Mars research helps scientists and
+                        engineers understand the challenges
+                        of future human missions to another
+                        planet.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Space Missions -->
+        <section class="mars-section" id="mars-missions">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">08 / EXPLORING MARS</div>
+                <h2>Important Space Missions</h2>
+                <p>
+                    Orbiters, landers, and rovers have transformed
+                    our understanding of the Red Planet.
+                </p>
+            </div>
+
+            <div class="mars-layers">
+                <article class="mars-card">
+                    <h3>Mariner 4</h3>
+
+                    <p>
+                        NASA's Mariner 4 performed the first
+                        successful close flyby of Mars in 1965
+                        and returned the first close-up images
+                        of another planet's surface.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Viking Missions</h3>
+
+                    <p>
+                        NASA's Viking 1 and Viking 2 missions
+                        included orbiters and landers that
+                        studied the surface, atmosphere, and
+                        possible signs of life.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Curiosity Rover</h3>
+
+                    <p>
+                        Curiosity studies Martian geology and
+                        past environmental conditions to
+                        investigate whether Mars once had
+                        conditions suitable for microbial life.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Perseverance Rover</h3>
+
+                    <p>
+                        Perseverance explores Jezero Crater,
+                        studies ancient rocks, and collects
+                        samples for possible future return
+                        to Earth.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Mars Reconnaissance Orbiter</h3>
+
+                    <p>
+                        This NASA orbiter uses powerful
+                        instruments to study the surface,
+                        atmosphere, and potential landing
+                        locations on Mars.
+                    </p>
+                </article>
+
+                <article class="mars-card">
+                    <h3>Mangalyaan</h3>
+
+                    <p>
+                        India's Mars Orbiter Mission, also
+                        called Mangalyaan, successfully entered
+                        Mars orbit in 2014 and demonstrated
+                        India's interplanetary mission capability.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Interesting Facts -->
+        <section class="mars-section" id="mars-facts">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">09 / DID YOU KNOW?</div>
+                <h2>Interesting Facts About Mars</h2>
+                <p>
+                    Discover some remarkable features of
+                    our neighboring planet.
+                </p>
+            </div>
+
+            <div class="mars-facts-grid">
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🔴</div>
+                    <h3>The Red Planet</h3>
+                    <p>
+                        Iron-rich minerals in Martian dust
+                        give the planet its distinctive
+                        red-orange appearance.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🌋</div>
+                    <h3>Giant Volcanoes</h3>
+                    <p>
+                        Mars is home to Olympus Mons,
+                        an enormous shield volcano that
+                        towers above the surrounding terrain.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">⏰</div>
+                    <h3>Earth-Like Day</h3>
+                    <p>
+                        A Martian day is only a little longer
+                        than an Earth day, making its daily
+                        cycle relatively familiar to us.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">❄️</div>
+                    <h3>Polar Ice Caps</h3>
+                    <p>
+                        Mars has polar ice deposits containing
+                        water ice and seasonal carbon-dioxide ice.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🛰️</div>
+                    <h3>Robotic Explorers</h3>
+                    <p>
+                        Orbiters, landers, and rovers have
+                        examined Mars from above and directly
+                        on its surface.
+                    </p>
+                </article>
+
+                <article class="mars-fact-card">
+                    <div class="mars-fact-icon">🧪</div>
+                    <h3>Ancient Environments</h3>
+                    <p>
+                        Some Martian rocks preserve evidence
+                        of environments that may once have
+                        been suitable for microbial life.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Reading Corner -->
+        <section class="mars-section" id="mars-resources">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">10 / EXPLORE FURTHER</div>
+                <h2>Reading Corner</h2>
+                <p>
+                    Continue exploring Mars through these
+                    trusted space science resources.
+                </p>
+            </div>
+
+            <div class="mars-resources">
+                <a
+                    href="https://science.nasa.gov/mars/"
+                    class="mars-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>NASA — Mars</h3>
+
+                    <p>
+                        Learn about Mars's environment,
+                        surface, atmosphere, and exploration.
+                    </p>
+                </a>
+
+                <a
+                    href="https://mars.nasa.gov/"
+                    class="mars-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>NASA Mars Exploration</h3>
+
+                    <p>
+                        Explore rover missions, discoveries,
+                        images, and the latest Mars research.
+                    </p>
+                </a>
+
+                <a
+                    href="https://www.isro.gov.in/"
+                    class="mars-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>ISRO</h3>
+
+                    <p>
+                        Discover India's space missions,
+                        including its Mars exploration achievements.
+                    </p>
+                </a>
+
+                <a
+                    href="https://science.nasa.gov/mission/"
+                    class="mars-resource"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <h3>NASA Missions</h3>
+
+                    <p>
+                        Explore spacecraft missions and
+                        scientific discoveries across the
+                        solar system.
+                    </p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Page Navigation -->
+        <section class="mars-section">
+            <div class="mars-section-heading">
+                <div class="mars-eyebrow">11 / CONTINUE YOUR JOURNEY</div>
+                <h2>Explore More Worlds</h2>
+                <p>
+                    Continue your journey through MY UNIVERSE 2.0
+                    and discover more of the solar system.
+                </p>
+            </div>
+
+            <div class="mars-navigation">
+                <a href="earth.html">← Previous: Earth</a>
+
+                <a href="../explore.html">✦ Return to Space Map</a>
+
+                <a href="jupiter.html">Next: Jupiter →</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mars-footer">
+        <p>
+            © 2026 <strong>MY UNIVERSE 2.0</strong>
+        </p>
+
+        <p>
+            Beyond Earth, the Red Planet awaits. 🔴
+        </p>
+    </footer>
+
+</body>
+</html>
+```

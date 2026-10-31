@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore the Universe | My Universe 2.0</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body class="space-map-page">
+
+    <!-- NAVIGATION -->
+    <header class="map-navbar">
+        <a href="index.html" class="map-logo">
+            <span class="logo-symbol">✦</span>
+            MY UNIVERSE <span class="logo-version">2.0</span>
+        </a>
+
+        <div class="map-nav-right">
+            <span class="mission-label">
+                <span class="status-dot"></span>
+                MISSION ACTIVE
+            </span>
+
+            <a href="index.html" class="map-home">← HOME</a>
+        </div>
+    </header>
+
+
+    <!-- MAIN EXPLORATION AREA -->
+    <main class="map-main">
+
+        <!-- INTRODUCTION -->
+        <section class="map-intro">
+
+            <div class="mission-tag">
+                <span>✦</span> YOUR NEXT ADVENTURE STARTS HERE
+            </div>
+
+            <h1>
+                CHOOSE YOUR<br>
+                <span>DESTINATION.</span>
+            </h1>
+
+            <p>
+                The universe is full of wonders.
+                Select a celestial destination and begin exploring.
+            </p>
+
+            <div class="map-instructions">
+                <span class="instruction-icon">◎</span>
+                SELECT A PLANET TO DISCOVER ITS SECRETS
+            </div>
+
+        </section>
+
+
+        <!-- SPACE MAP -->
+        <section class="interactive-map">
+
+            <div class="map-top-label">
+                <span>SOLAR SYSTEM</span>
+                <span>MAP 01 / MILKY WAY</span>
+            </div>
+
+            <div class="space-map">
+
+                <!-- DECORATIVE STARS -->
+                <span class="map-star star-one">✦</span>
+                <span class="map-star star-two">✧</span>
+                <span class="map-star star-three">✦</span>
+                <span class="map-star star-four">·</span>
+                <span class="map-star star-five">✧</span>
+                <span class="map-star star-six">·</span>
+                <span class="map-star star-seven">✦</span>
+                <span class="map-star star-eight">·</span>
+                <span class="map-star star-nine">✧</span>
+                <span class="map-star star-ten">✦</span>
+
+
+                <!-- SUN -->
+                <button
+                    class="celestial-object sun-object selected"
+                    data-planet="sun"
+                    aria-label="Explore the Sun"
+                    aria-pressed="true"
+                >
+                    <span class="object-visual sun-visual">☀</span>
+                    <span class="object-name">SUN</span>
+                    <span class="object-category">OUR STAR</span>
+                </button>
+
+
+                <!-- MERCURY -->
+                <button
+                    class="celestial-object mercury-object"
+                    data-planet="mercury"
+                    aria-label="Explore Mercury"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual mercury-visual">●</span>
+                    <span class="object-name">MERCURY</span>
+                    <span class="object-category">01 / PLANET</span>
+                </button>
+
+
+                <!-- VENUS -->
+                <button
+                    class="celestial-object venus-object"
+                    data-planet="venus"
+                    aria-label="Explore Venus"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual venus-visual">●</span>
+                    <span class="object-name">VENUS</span>
+                    <span class="object-category">02 / PLANET</span>
+                </button>
+
+
+                <!-- EARTH -->
+                <button
+                    class="celestial-object earth-object"
+                    data-planet="earth"
+                    aria-label="Explore Earth"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual earth-visual">●</span>
+                    <span class="object-name">EARTH</span>
+                    <span class="object-category">03 / PLANET</span>
+                </button>
+
+
+                <!-- MARS -->
+                <button
+                    class="celestial-object mars-object"
+                    data-planet="mars"
+                    aria-label="Explore Mars"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual mars-visual">●</span>
+                    <span class="object-name">MARS</span>
+                    <span class="object-category">04 / PLANET</span>
+                </button>
+
+
+                <!-- JUPITER -->
+                <button
+                    class="celestial-object jupiter-object"
+                    data-planet="jupiter"
+                    aria-label="Explore Jupiter"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual jupiter-visual">●</span>
+                    <span class="object-name">JUPITER</span>
+                    <span class="object-category">05 / PLANET</span>
+                </button>
+
+
+                <!-- SATURN -->
+                <button
+                    class="celestial-object saturn-object"
+                    data-planet="saturn"
+                    aria-label="Explore Saturn"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual saturn-visual">◉</span>
+                    <span class="object-name">SATURN</span>
+                    <span class="object-category">06 / PLANET</span>
+                </button>
+
+
+                <!-- URANUS -->
+                <button
+                    class="celestial-object uranus-object"
+                    data-planet="uranus"
+                    aria-label="Explore Uranus"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual uranus-visual">●</span>
+                    <span class="object-name">URANUS</span>
+                    <span class="object-category">07 / PLANET</span>
+                </button>
+
+
+                <!-- NEPTUNE -->
+                <button
+                    class="celestial-object neptune-object"
+                    data-planet="neptune"
+                    aria-label="Explore Neptune"
+                    aria-pressed="false"
+                >
+                    <span class="object-visual neptune-visual">●</span>
+                    <span class="object-name">NEPTUNE</span>
+                    <span class="object-category">08 / PLANET</span>
+                </button>
+
+
+                <!-- MAP FOOTNOTE -->
+                <div class="map-bottom-note">
+                    YOUR SOLAR SYSTEM EXPLORATION MAP
+                </div>
+
+            </div>
+
+
+            <!-- MAP LEGEND -->
+            <div class="map-legend">
+                <span>
+                    <i class="legend-dot"></i>
+                    CELESTIAL OBJECTS
+                </span>
+
+                <span>SELECT AN OBJECT TO CONTINUE</span>
+            </div>
+
+        </section>
+
+
+        <!-- MISSION FOOTER -->
+        <section class="mission-footer">
+
+            <div>
+                <span class="footer-small-label">YOUR MISSION</span>
+                <h2>Curiosity has no limits.</h2>
+            </div>
+
+            <p>
+                Eight planets. One star. Endless discoveries.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- PAGE FOOTER -->
+    <footer class="map-footer">
+        <span>MY UNIVERSE 2.0</span>
+
+        <span>KEEP EXPLORING ✦ KEEP DISCOVERING</span>
+
+        <a href="index.html">RETURN HOME ↑</a>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="explore.js"></script>
+
+</body>
+</html>

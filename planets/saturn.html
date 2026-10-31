@@ -1,0 +1,1044 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturn | MY UNIVERSE</title>
+    <link rel="stylesheet" href="../main.css">
+
+    <style>
+        :root {
+            --saturn-gold: #e9c77b;
+            --saturn-cream: #f8e6b8;
+            --saturn-brown: #b58b57;
+            --space-dark: #050816;
+            --space-card: rgba(17, 25, 48, 0.82);
+            --space-border: rgba(233, 199, 123, 0.24);
+            --text-main: #f5f7ff;
+            --text-muted: #aab5ce;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(ellipse at 80% 10%, rgba(233, 199, 123, 0.12), transparent 35%),
+                radial-gradient(ellipse at 10% 65%, rgba(181, 139, 87, 0.10), transparent 35%),
+                var(--space-dark);
+            color: var(--text-main);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .saturn-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 7%;
+            border-bottom: 1px solid var(--space-border);
+            background: rgba(5, 8, 22, 0.92);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .saturn-logo {
+            color: var(--saturn-cream);
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .saturn-navbar nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        .saturn-navbar nav a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .saturn-navbar nav a:hover {
+            color: var(--saturn-cream);
+        }
+
+        .saturn-home {
+            border: 1px solid var(--space-border);
+            padding: 8px 16px;
+            border-radius: 22px;
+            color: var(--saturn-cream);
+        }
+
+        .saturn-hero {
+            min-height: 590px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 40px;
+            padding: 70px 8%;
+            overflow: hidden;
+        }
+
+        .saturn-eyebrow {
+            color: var(--saturn-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .saturn-hero h1 {
+            margin: 15px 0;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            line-height: 1;
+            background: linear-gradient(120deg, #fff4d2, #e9c77b, #b58b57);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .saturn-hero p {
+            max-width: 620px;
+            color: var(--text-muted);
+            font-size: 1.08rem;
+        }
+
+        .saturn-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            background: linear-gradient(100deg, var(--saturn-gold), var(--saturn-cream));
+            color: #211a0d;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .saturn-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .saturn-visual {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .saturn-orbit {
+            position: absolute;
+            width: 420px;
+            height: 160px;
+            border: 2px solid rgba(233, 199, 123, 0.55);
+            border-radius: 50%;
+            transform: rotate(-18deg);
+            box-shadow: 0 0 18px rgba(233, 199, 123, 0.10);
+        }
+
+        .saturn-ring {
+            position: absolute;
+            width: 420px;
+            height: 145px;
+            border-radius: 50%;
+            transform: rotate(-18deg);
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(248, 230, 184, 0.95) 0px,
+                    rgba(248, 230, 184, 0.95) 8px,
+                    rgba(181, 139, 87, 0.88) 10px,
+                    rgba(115, 82, 48, 0.85) 16px,
+                    rgba(233, 199, 123, 0.92) 22px,
+                    rgba(248, 230, 184, 0.85) 30px
+                );
+            box-shadow: 0 0 22px rgba(233, 199, 123, 0.16);
+            -webkit-mask: radial-gradient(ellipse, transparent 37%, #000 39%, #000 67%, transparent 69%);
+            mask: radial-gradient(ellipse, transparent 37%, #000 39%, #000 67%, transparent 69%);
+        }
+
+        .saturn-planet {
+            width: min(250px, 58vw);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    #e8d2a3 0px,
+                    #e8d2a3 15px,
+                    #c9a875 18px,
+                    #f2dfb9 30px,
+                    #b58d60 43px,
+                    #ead3a4 55px,
+                    #d7ba86 68px
+                );
+            box-shadow:
+                inset -30px -15px 45px rgba(0, 0, 0, 0.5),
+                inset 12px 8px 28px rgba(255, 255, 255, 0.17),
+                0 0 65px rgba(233, 199, 123, 0.18);
+            animation: saturnFloat 6s ease-in-out infinite;
+        }
+
+        .saturn-planet::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.4),
+                transparent 48%,
+                rgba(255, 255, 255, 0.08)
+            );
+        }
+
+        .saturn-section {
+            padding: 75px 8%;
+        }
+
+        .saturn-section-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .saturn-section-heading span {
+            color: var(--saturn-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.78rem;
+            font-weight: bold;
+        }
+
+        .saturn-section-heading h2 {
+            margin: 8px 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .saturn-section-heading p {
+            max-width: 720px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+
+        .saturn-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .saturn-card {
+            padding: 28px;
+            background: var(--space-card);
+            border: 1px solid var(--space-border);
+            border-radius: 20px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .saturn-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--saturn-cream);
+        }
+
+        .saturn-card h3 {
+            margin-top: 0;
+            color: var(--saturn-cream);
+        }
+
+        .saturn-card p,
+        .saturn-card li {
+            color: var(--text-muted);
+        }
+
+        .saturn-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .saturn-stat {
+            text-align: center;
+            padding: 23px 12px;
+            background: rgba(233, 199, 123, 0.06);
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+        }
+
+        .saturn-stat strong {
+            display: block;
+            color: var(--saturn-cream);
+            font-size: 1.45rem;
+        }
+
+        .saturn-stat span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .saturn-layers {
+            display: grid;
+            gap: 15px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .saturn-layer {
+            display: grid;
+            grid-template-columns: 65px 1fr;
+            gap: 18px;
+            align-items: start;
+            padding: 23px;
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            background: var(--space-card);
+        }
+
+        .saturn-layer-number {
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            color: #211a0d;
+            background: var(--saturn-cream);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .saturn-layer h3 {
+            margin: 0 0 5px;
+            color: var(--saturn-cream);
+        }
+
+        .saturn-layer p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .saturn-highlight {
+            margin: 35px auto 0;
+            max-width: 950px;
+            padding: 28px;
+            border-left: 4px solid var(--saturn-gold);
+            border-radius: 0 15px 15px 0;
+            background: rgba(233, 199, 123, 0.09);
+        }
+
+        .saturn-highlight p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .saturn-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .saturn-fact-card {
+            padding: 25px;
+            border-radius: 18px;
+            background: var(--space-card);
+            border: 1px solid var(--space-border);
+        }
+
+        .saturn-fact-icon {
+            font-size: 2rem;
+        }
+
+        .saturn-fact-card h3 {
+            color: var(--saturn-cream);
+        }
+
+        .saturn-fact-card p {
+            color: var(--text-muted);
+        }
+
+        .saturn-mission-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .saturn-resource-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .saturn-resource {
+            display: block;
+            padding: 23px;
+            background: var(--space-card);
+            border: 1px solid var(--space-border);
+            border-radius: 16px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .saturn-resource:hover {
+            border-color: var(--saturn-cream);
+            transform: translateY(-4px);
+        }
+
+        .saturn-resource strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--saturn-cream);
+        }
+
+        .saturn-resource span {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .saturn-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding: 30px 8%;
+            border-top: 1px solid var(--space-border);
+            border-bottom: 1px solid var(--space-border);
+        }
+
+        .saturn-navigation a {
+            padding: 12px 20px;
+            border: 1px solid var(--space-border);
+            border-radius: 25px;
+            color: var(--saturn-cream);
+            transition: background 0.3s;
+        }
+
+        .saturn-navigation a:hover {
+            background: rgba(233, 199, 123, 0.1);
+        }
+
+        .saturn-footer {
+            padding: 35px 8%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .saturn-footer strong {
+            color: var(--saturn-cream);
+        }
+
+        @keyframes saturnFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .saturn-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .saturn-hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .saturn-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .saturn-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .saturn-facts-grid,
+            .saturn-resource-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .saturn-navbar {
+                flex-direction: column;
+            }
+
+            .saturn-navbar nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .saturn-hero {
+                padding: 50px 6%;
+            }
+
+            .saturn-visual {
+                min-height: 320px;
+            }
+
+            .saturn-planet {
+                width: min(220px, 55vw);
+            }
+
+            .saturn-ring,
+            .saturn-orbit {
+                width: 310px;
+                height: 120px;
+            }
+
+            .saturn-section {
+                padding: 55px 6%;
+            }
+
+            .saturn-stats,
+            .saturn-facts-grid,
+            .saturn-mission-list,
+            .saturn-resource-list {
+                grid-template-columns: 1fr;
+            }
+
+            .saturn-layer {
+                grid-template-columns: 1fr;
+            }
+
+            .saturn-navigation {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="saturn-navbar">
+        <a href="../index.html" class="saturn-logo">✦ MY UNIVERSE</a>
+
+        <a href="../explore.html" class="saturn-home">← SPACE MAP</a>
+    </header>
+
+    <main>
+
+        <section class="saturn-hero">
+            <div class="saturn-hero-content">
+                <span class="saturn-eyebrow">The Jewel of the Solar System</span>
+                <h1>Saturn</h1>
+                <p>
+                    Discover Saturn, the magnificent gas giant famous for
+                    its spectacular rings. With its golden atmosphere,
+                    fascinating moons, and mysterious hexagonal storm,
+                    Saturn is one of the most remarkable worlds in our
+                    solar system.
+                </p>
+                <a href="#overview" class="saturn-button">Explore Saturn ↓</a>
+            </div>
+
+            <div class="saturn-visual" aria-label="Stylized illustration of Saturn and its rings">
+                <div class="saturn-orbit"></div>
+                <div class="saturn-ring"></div>
+                <div class="saturn-planet"></div>
+            </div>
+        </section>
+
+        <section class="saturn-section" id="overview">
+            <div class="saturn-section-heading">
+                <span>01 / Overview</span>
+                <h2>The Ringed Giant</h2>
+                <p>
+                    Saturn is the sixth planet from the Sun and the
+                    second-largest planet in our solar system.
+                </p>
+            </div>
+
+            <div class="saturn-overview">
+                <article class="saturn-card">
+                    <h3>What is Saturn?</h3>
+                    <p>
+                        Saturn is a gas giant composed mostly of hydrogen
+                        and helium. It does not have a solid surface like
+                        Earth. Its atmosphere contains clouds, strong winds,
+                        and storms.
+                    </p>
+                    <p>
+                        Saturn is best known for its extensive ring system,
+                        which contains countless pieces of ice, rocky
+                        material, and dust orbiting the planet.
+                    </p>
+                </article>
+
+                <article class="saturn-card">
+                    <h3>Why is Saturn special?</h3>
+                    <ul>
+                        <li>It has the most visually prominent ring system among the planets.</li>
+                        <li>It is the second-largest planet in the solar system.</li>
+                        <li>It has a large and diverse collection of moons.</li>
+                        <li>Its north pole has a famous hexagon-shaped atmospheric pattern.</li>
+                        <li>Its moon Titan has lakes and seas of liquid hydrocarbons.</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="saturn-stats">
+                <div class="saturn-stat">
+                    <strong>6th</strong>
+                    <span>From the Sun</span>
+                </div>
+
+                <div class="saturn-stat">
+                    <strong>29.4</strong>
+                    <span>Earth years per orbit</span>
+                </div>
+
+                <div class="saturn-stat">
+                    <strong>10.7 hrs</strong>
+                    <span>Approximate rotation period</span>
+                </div>
+
+                <div class="saturn-stat">
+                    <strong>116,460 km</strong>
+                    <span>Approximate mean diameter</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="saturn-section">
+            <div class="saturn-section-heading">
+                <span>02 / Structure</span>
+                <h2>Inside Saturn</h2>
+                <p>
+                    Beneath Saturn's beautiful clouds lies an enormous
+                    interior of hydrogen, helium, and heavier materials
+                    under extreme pressure.
+                </p>
+            </div>
+
+            <div class="saturn-layers">
+                <article class="saturn-layer">
+                    <div class="saturn-layer-number">01</div>
+                    <div>
+                        <h3>Upper Atmosphere</h3>
+                        <p>
+                            Saturn's outer atmosphere contains clouds
+                            dominated by ammonia ice, with other cloud
+                            layers deeper below.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="saturn-layer">
+                    <div class="saturn-layer-number">02</div>
+                    <div>
+                        <h3>Molecular Hydrogen</h3>
+                        <p>
+                            Most of Saturn's outer interior contains
+                            hydrogen and helium. The gases become denser
+                            as pressure increases toward the center.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="saturn-layer">
+                    <div class="saturn-layer-number">03</div>
+                    <div>
+                        <h3>Deep Interior</h3>
+                        <p>
+                            At greater depths, hydrogen experiences
+                            extreme pressure and may enter electrically
+                            conducting states.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="saturn-layer">
+                    <div class="saturn-layer-number">04</div>
+                    <div>
+                        <h3>Heavy-Element Core Region</h3>
+                        <p>
+                            Saturn is believed to contain heavier elements
+                            deep inside. Scientists are still investigating
+                            the structure and mixing of its central region.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="saturn-highlight">
+                <p>
+                    <strong>Did you know?</strong> Saturn has a very low
+                    average density compared with water. However, it is
+                    a giant planet, and it could not simply float in an
+                    ordinary ocean.
+                </p>
+            </div>
+        </section>
+
+        <section class="saturn-section">
+            <div class="saturn-section-heading">
+                <span>03 / The Rings</span>
+                <h2>Saturn's Spectacular Rings</h2>
+                <p>
+                    Saturn's rings stretch across a vast region around
+                    the planet and contain particles of many different sizes.
+                </p>
+            </div>
+
+            <div class="saturn-overview">
+                <article class="saturn-card">
+                    <h3>What are the rings made of?</h3>
+                    <p>
+                        Saturn's rings are made mostly of water ice, along
+                        with smaller amounts of rocky material and dust.
+                        Individual particles range from tiny grains to
+                        much larger chunks.
+                    </p>
+                    <p>
+                        Although the rings look solid in photographs,
+                        they consist of countless separate particles
+                        orbiting Saturn.
+                    </p>
+                </article>
+
+                <article class="saturn-card">
+                    <h3>Ring Divisions</h3>
+                    <p>
+                        Astronomers identify several main rings, including
+                        the A, B, and C rings. The Cassini Division is a
+                        prominent gap between the A and B rings, although
+                        it is not completely empty.
+                    </p>
+                    <p>
+                        The rings are extremely wide but, in many places,
+                        remarkably thin compared with their overall span.
+                    </p>
+                </article>
+            </div>
+
+            <div class="saturn-highlight">
+                <p>
+                    Saturn's rings are not permanent structures on
+                    astronomical timescales. Research suggests that
+                    ring material gradually falls toward the planet,
+                    and the rings may change substantially over time.
+                </p>
+            </div>
+        </section>
+
+        <section class="saturn-section">
+            <div class="saturn-section-heading">
+                <span>04 / Moons</span>
+                <h2>Worlds Around Saturn</h2>
+                <p>
+                    Saturn has a remarkable collection of moons, from
+                    worlds with thick atmospheres to icy bodies with
+                    hidden oceans.
+                </p>
+            </div>
+
+            <div class="saturn-facts-grid">
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🌫️</div>
+                    <h3>Titan</h3>
+                    <p>
+                        Titan is Saturn's largest moon. It has a thick
+                        atmosphere and lakes and seas of liquid methane
+                        and ethane on its surface.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">💧</div>
+                    <h3>Enceladus</h3>
+                    <p>
+                        Enceladus ejects plumes of water-rich material
+                        into space. Evidence indicates that a global
+                        ocean exists beneath its icy crust.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🌑</div>
+                    <h3>Rhea</h3>
+                    <p>
+                        Rhea is one of Saturn's larger moons. Its icy
+                        surface is marked by numerous impact craters.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🧊</div>
+                    <h3>Dione</h3>
+                    <p>
+                        Dione is an icy moon with a heavily cratered
+                        surface and bright fractures in some regions.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🌌</div>
+                    <h3>Iapetus</h3>
+                    <p>
+                        Iapetus is known for its striking contrast
+                        between a dark hemisphere and a much brighter one.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🪨</div>
+                    <h3>Mimas</h3>
+                    <p>
+                        Mimas has a huge impact crater that gives it
+                        a distinctive appearance in spacecraft images.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="saturn-section">
+            <div class="saturn-section-heading">
+                <span>05 / Atmosphere</span>
+                <h2>Storms and Strange Weather</h2>
+                <p>
+                    Saturn's atmosphere contains powerful winds,
+                    changing cloud patterns, and unusual polar features.
+                </p>
+            </div>
+
+            <div class="saturn-overview">
+                <article class="saturn-card">
+                    <h3>The North Pole Hexagon</h3>
+                    <p>
+                        A remarkable six-sided jet stream surrounds
+                        Saturn's north polar region. This enormous
+                        hexagonal pattern has been observed by spacecraft
+                        and telescopes.
+                    </p>
+                </article>
+
+                <article class="saturn-card">
+                    <h3>Powerful Winds</h3>
+                    <p>
+                        Saturn's atmosphere has very strong winds and
+                        broad bands of clouds. Large storms can develop
+                        and change over time, revealing the planet's
+                        active weather system.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="saturn-section">
+            <div class="saturn-section-heading">
+                <span>06 / Exploration</span>
+                <h2>Discovering Saturn</h2>
+                <p>
+                    Space missions have transformed our understanding
+                    of Saturn, its rings, and its moons.
+                </p>
+            </div>
+
+            <div class="saturn-mission-list">
+                <article class="saturn-card">
+                    <h3>Pioneer 11</h3>
+                    <p>
+                        NASA's Pioneer 11 spacecraft flew past Saturn
+                        in 1979, providing important early observations
+                        of the planet and its surroundings.
+                    </p>
+                </article>
+
+                <article class="saturn-card">
+                    <h3>Voyager 1 and Voyager 2</h3>
+                    <p>
+                        The Voyager spacecraft conducted close flybys
+                        of Saturn, revealing more details about its
+                        atmosphere, rings, and moons.
+                    </p>
+                </article>
+
+                <article class="saturn-card">
+                    <h3>Cassini</h3>
+                    <p>
+                        The Cassini spacecraft orbited Saturn from 2004
+                        to 2017. It studied the planet, rings, and moons
+                        in great detail.
+                    </p>
+                </article>
+
+                <article class="saturn-card">
+                    <h3>Huygens</h3>
+                    <p>
+                        The Huygens probe descended through Titan's
+                        atmosphere and landed on its surface in 2005,
+                        returning valuable information about this
+                        unusual moon.
+                    </p>
+                </article>
+            </div>
+
+            <div class="saturn-highlight">
+                <p>
+                    <strong>Cassini's final journey:</strong> In 2017,
+                    Cassini entered Saturn's atmosphere at the end of
+                    its mission, helping protect the planet's moons
+                    from possible contamination.
+                </p>
+            </div>
+        </section>
+
+        <section class="saturn-section">
+            <div class="saturn-section-heading">
+                <span>07 / Discoveries</span>
+                <h2>Interesting Facts</h2>
+                <p>
+                    Saturn has many extraordinary features beyond
+                    its famous rings.
+                </p>
+            </div>
+
+            <div class="saturn-facts-grid">
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">💍</div>
+                    <h3>Famous Rings</h3>
+                    <p>
+                        Saturn's bright rings make it one of the most
+                        recognizable planets in the solar system.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">⏳</div>
+                    <h3>A Long Year</h3>
+                    <p>
+                        Saturn takes about 29.4 Earth years to complete
+                        one orbit around the Sun.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🌪️</div>
+                    <h3>Polar Hexagon</h3>
+                    <p>
+                        Saturn's north pole contains a remarkable
+                        six-sided atmospheric jet stream.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🌊</div>
+                    <h3>Hidden Oceans</h3>
+                    <p>
+                        Enceladus has a subsurface ocean and ejects
+                        water-rich material through cracks in its ice.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🌫️</div>
+                    <h3>Orange Titan</h3>
+                    <p>
+                        Titan's thick atmosphere gives the moon
+                        a hazy orange appearance.
+                    </p>
+                </article>
+
+                <article class="saturn-fact-card">
+                    <div class="saturn-fact-icon">🔭</div>
+                    <h3>Visible from Earth</h3>
+                    <p>
+                        Saturn can be seen without a telescope under
+                        suitable conditions. A telescope can reveal
+                        its beautiful rings.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="saturn-section">
+            <div class="saturn-section-heading">
+                <span>08 / Learn More</span>
+                <h2>Reading Corner</h2>
+                <p>
+                    Explore official resources to learn more about
+                    Saturn and its fascinating moons.
+                </p>
+            </div>
+
+            <div class="saturn-resource-list">
+                <a class="saturn-resource"
+                   href="https://science.nasa.gov/saturn/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <strong>NASA — Saturn</strong>
+                    <span>Explore Saturn's rings, atmosphere, and moons.</span>
+                </a>
+
+                <a class="saturn-resource"
+                   href="https://science.nasa.gov/mission/cassini/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <strong>NASA — Cassini Mission</strong>
+                    <span>Discover the spacecraft that explored Saturn for over a decade.</span>
+                </a>
+
+                <a class="saturn-resource"
+                   href="https://science.nasa.gov/saturn/moons/titan/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <strong>NASA — Titan</strong>
+                    <span>Learn about Saturn's largest moon and its unusual surface.</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="saturn-navigation">
+            <a href="jupiter.html">← Previous: Jupiter</a>
+            <a href="../explore.html">Explore All Planets ↑</a>
+            <a href="uranus.html">Next: Uranus →</a>
+        </section>
+
+    </main>
+
+    <footer class="saturn-footer">
+        <p>
+            <strong>MY UNIVERSE 2.O</strong> — Discover the wonders beyond Earth.
+        </p>
+        <p>Keep exploring. Keep questioning. Keep looking up. ✦</p>
+    </footer>
+
+</body>
+</html>
